@@ -5,10 +5,11 @@ const DURATION = 0.25;
 const STAGGER = 0.025;
 
 const FlipText = ({ children, isHovered }) => {
+  const characters = children.split("");
   return (
     <div className="relative block overflow-hidden whitespace-nowrap font-bold tracking-wide">
       <div className="flex">
-        {children.split("").map((l, i) => (
+        {characters.map((l, i) => (
           <motion.span
             variants={{
               initial: { y: 0 },
@@ -29,7 +30,7 @@ const FlipText = ({ children, isHovered }) => {
         ))}
       </div>
       <div className="absolute inset-0 flex">
-        {children.split("").map((l, i) => (
+        {characters.map((l, i) => (
           <motion.span
             variants={{
               initial: { y: "100%" },
@@ -88,9 +89,9 @@ export const MagnetButton = ({ text = "Hover Me", onClick }) => {
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       onMouseEnter={handleMouseEnter}
-      className="relative p-6 cursor-pointer group items-center justify-center flex"
+      className="relative p-8 cursor-pointer group items-center justify-center flex w-fit mx-auto"
     >
-      <div className="relative inline-block w-full h-full">
+      <div className="relative inline-block">
         {/* Solid Shadow Base - This stays anchored and doesn't move with the magnet */}
         <div className="absolute inset-0 bg-[#11100a] group-hover:bg-[#cf2d56] transition-colors duration-500 rounded-lg translate-y-1.5 translate-x-1.5" />
 
@@ -104,7 +105,7 @@ export const MagnetButton = ({ text = "Hover Me", onClick }) => {
             mass: 0.1,
           }}
           onClick={onClick}
-          className="relative px-8 py-4 bg-[#fdf8f7] text-[#11100a] border-2 border-[#11100a] rounded-lg text-lg uppercase font-['Space_Grotesk',sans-serif] focus:outline-none transition-colors duration-300 w-full"
+          className="relative px-10 py-5 bg-[#fdf8f7] text-[#11100a] border-2 border-[#11100a] rounded-xl text-lg uppercase font-bold focus:outline-none transition-colors duration-300 whitespace-nowrap min-w-[160px]"
         >
           <FlipText isHovered={isHovered}>{text}</FlipText>
         </motion.button>

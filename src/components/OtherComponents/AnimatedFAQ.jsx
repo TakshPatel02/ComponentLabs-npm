@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus } from "lucide-react";
 
-const faqs = [
+const DEFAULT_FAQS = [
   {
     question: "What makes this component library different?",
     answer:
@@ -25,28 +25,32 @@ const faqs = [
   },
 ];
 
-export const AnimatedFAQ = () => {
+export const AnimatedFAQ = ({ faqs = DEFAULT_FAQS, question, answer }) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleToggle = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
+  const displayFaqs = (question && answer)
+    ? [{ question, answer }]
+    : (faqs || DEFAULT_FAQS);
+
   return (
-    <section className="w-full max-w-3xl mx-auto py-16 px-4 font-ui-body">
+    <section className="w-full max-w-3xl mx-auto py-16 px-4 font-['Space_Grotesk']">
       <div className="mb-12 flex flex-col items-center text-center">
-        <h2 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors tracking-tighter mb-4">
+        <h2 className="font-['Space_Grotesk'] text-[32px] md:text-[40px] leading-tight text-[#11100a] transition-colors tracking-tighter mb-4">
           Frequently Assumed{" "}
-          <span className="text-secondary italic font-editorial-standard font-medium">
+          <span className="text-[#cf2d56] italic font-['Newsreader'] font-medium">
             Queries
           </span>
         </h2>
-        <p className="font-editorial-standard text-editorial-standard text-on-surface-variant max-w-2xl">
+        <p className="font-['Newsreader'] text-[18px] text-[#48473f] max-w-2xl">
           Everything you need to know about our principles and architecture.
         </p>
       </div>
       <div className="space-y-4">
-        {faqs.map((faq, index) => (
+        {displayFaqs.map((faq, index) => (
           <FAQItem
             key={index}
             question={faq.question}
@@ -64,21 +68,20 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => {
   return (
     <motion.div
       initial={false}
-      className={`border oklab-border rounded-xl overflow-hidden transition-colors duration-300 ${
-        isOpen ? "bg-surface-300" : "bg-surface hover:bg-surface-container"
-      }`}
+      className={`border border-[#26251e]/10 rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? "bg-[#ebeae5]" : "bg-[#fdf8f7] hover:bg-[#f1edeb]"
+        }`}
     >
       <button
         onClick={onToggle}
-        className="w-full px-6 py-6 flex items-center justify-between text-left focus:outline-none"
+        className="w-full px-6 py-6 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#cf2d56]/50 outline-none"
       >
-        <span className="text-lg font-medium text-primary font-['Space_Grotesk']">
+        <span className="text-[18px] font-medium text-[#11100a] font-['Space_Grotesk']">
           {question}
         </span>
         <motion.div
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3, ease: "backOut" }}
-          className="shrink-0 ml-4 h-8 w-8 rounded-full bg-surface border oklab-border flex items-center justify-center text-secondary"
+          className="shrink-0 ml-4 h-8 w-8 rounded-full bg-[#fdf8f7] border border-[#26251e]/10 flex items-center justify-center text-[#cf2d56]"
         >
           <Plus size={18} />
         </motion.div>
@@ -92,7 +95,7 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-6 text-on-surface-variant text-[16px] leading-relaxed border-t oklab-border pt-4 mt-2 font-editorial-standard">
+            <div className="px-6 pb-6 text-[#48473f] text-[16px] leading-relaxed border-t border-[#26251e]/10 pt-4 mt-2 font-['Newsreader']">
               <motion.p
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
