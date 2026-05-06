@@ -35,5 +35,13 @@
     "primitives",
     "animations"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TakshPatel02/ComponentLabs-npm"
+  },
+  "homepage": "https://component-labs.vercel.app",
+  "bugs": {
+    "url": "https://github.com/TakshPatel02/ComponentLabs-npm/issues"
+  },
   "license": "MIT"
 }
