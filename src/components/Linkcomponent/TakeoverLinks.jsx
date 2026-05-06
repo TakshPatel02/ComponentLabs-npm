@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAnimate } from "motion/react";
 
-const LINKS = [
+const DEFAULT_LINKS = [
   { label: "ART", href: "#", color: "#6b5b95" },
   { label: "DESIGN", href: "#", color: "#4f6d7a" },
   { label: "PHOTOS", href: "#", color: "#7a5c61" },
@@ -12,7 +12,10 @@ const SplitText = ({ text, className, letterClassName }) => {
   return (
     <span className={className} aria-hidden>
       {text.split("").map((char, index) => (
-        <span key={`${text}-${index}`} className="relative inline-block overflow-hidden align-top">
+        <span
+          key={`${text}-${index}`}
+          className="relative inline-block overflow-hidden align-top"
+        >
           <span className={`${letterClassName} char-out block`}>
             {char === " " ? "\u00A0" : char}
           </span>
@@ -37,12 +40,12 @@ const TakeoverLinkRow = ({ label, href, color, onHoverStart }) => {
     animate(
       ".char-out",
       { y: ["0%", "-105%"] },
-      { duration: 0.50, delay: (index) => index * 0.02, ease: "easeInOut" },
+      { duration: 0.5, delay: (index) => index * 0.02, ease: "easeInOut" },
     );
     animate(
       ".char-in",
       { y: ["105%", "0%"] },
-      { duration: 0.50, delay: (index) => index * 0.02, ease: "easeInOut" },
+      { duration: 0.5, delay: (index) => index * 0.02, ease: "easeInOut" },
     );
   };
 
@@ -50,12 +53,12 @@ const TakeoverLinkRow = ({ label, href, color, onHoverStart }) => {
     animate(
       ".char-out",
       { y: ["-105%", "0%"] },
-      { duration: 0.40, delay: (index) => index * 0.015, ease: "easeInOut" },
+      { duration: 0.4, delay: (index) => index * 0.015, ease: "easeInOut" },
     );
     animate(
       ".char-in",
       { y: ["0%", "105%"] },
-      { duration: 0.40, delay: (index) => index * 0.015, ease: "easeInOut" },
+      { duration: 0.4, delay: (index) => index * 0.015, ease: "easeInOut" },
     );
   };
 
@@ -78,9 +81,11 @@ const TakeoverLinkRow = ({ label, href, color, onHoverStart }) => {
   );
 };
 
-const TakeoverLinks = () => {
+export const TakeoverLinks = ({ links = DEFAULT_LINKS, className = "" }) => {
   const [containerScope, animateContainer] = useAnimate();
-  const [activeColor, setActiveColor] = useState(LINKS[0].color);
+  const [activeColor, setActiveColor] = useState(
+    links[0]?.color || DEFAULT_LINKS[0].color,
+  );
 
   const handleHoverStart = async (color) => {
     setActiveColor(color);
@@ -103,15 +108,18 @@ const TakeoverLinks = () => {
     <section
       ref={containerScope}
       onMouseLeave={handleContainerLeave}
-      className="relative overflow-hidden rounded-xl border border-primary/25 bg-cursor-cream p-6 md:p-10"
+      className={`relative overflow-hidden rounded-xl border border-primary/25 bg-cursor-cream p-6 md:p-10 ${className}`.trim()}
     >
       <span
         className="takeover-bg pointer-events-none absolute inset-0"
-        style={{ backgroundColor: activeColor, clipPath: "inset(100% 0% 0% 0%)" }}
+        style={{
+          backgroundColor: activeColor,
+          clipPath: "inset(100% 0% 0% 0%)",
+        }}
       />
 
       <div className="relative mx-auto w-full max-w-3xl">
-        {LINKS.map((item) => (
+        {links.map((item) => (
           <TakeoverLinkRow
             key={item.label}
             label={item.label}

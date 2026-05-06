@@ -32,7 +32,7 @@ const EXIT_KEYFRAMES = {
   right: [NO_CLIP, BOTTOM_LEFT_CLIP],
 };
 
-const LinkBox = ({ Icon, href }) => {
+const LinkBox = ({ Icon, href, label = "Brand link" }) => {
   const [scope, animate] = useAnimate();
 
   const getNearestSide = (event) => {
@@ -67,12 +67,20 @@ const LinkBox = ({ Icon, href }) => {
 
   const handleMouseEnter = (event) => {
     const side = getNearestSide(event);
-    animate(scope.current, { clipPath: ENTRANCE_KEYFRAMES[side] }, { duration: 0.25 });
+    animate(
+      scope.current,
+      { clipPath: ENTRANCE_KEYFRAMES[side] },
+      { duration: 0.25 },
+    );
   };
 
   const handleMouseLeave = (event) => {
     const side = getNearestSide(event);
-    animate(scope.current, { clipPath: EXIT_KEYFRAMES[side] }, { duration: 0.25 });
+    animate(
+      scope.current,
+      { clipPath: EXIT_KEYFRAMES[side] },
+      { duration: 0.25 },
+    );
   };
 
   return (
@@ -81,7 +89,7 @@ const LinkBox = ({ Icon, href }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="relative grid h-20 w-full place-content-center sm:h-24 md:h-28"
-      aria-label="Brand link"
+      aria-label={label}
     >
       <Icon className="h-5 w-5 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-primary" />
 
@@ -96,26 +104,50 @@ const LinkBox = ({ Icon, href }) => {
   );
 };
 
-const ClipPathLinks = () => {
+const DEFAULT_LINK_GROUPS = [
+  [
+    { Icon: Globe, href: "#", label: "Globe" },
+    { Icon: ShoppingBag, href: "#", label: "Shopping bag" },
+  ],
+  [
+    { Icon: Apple, href: "#", label: "Apple" },
+    { Icon: Siren, href: "#", label: "Siren" },
+    { Icon: Play, href: "#", label: "Play" },
+    { Icon: Cloud, href: "#", label: "Cloud" },
+  ],
+  [
+    { Icon: Code2, href: "#", label: "Code" },
+    { Icon: Music, href: "#", label: "Music" },
+    { Icon: Link2, href: "#", label: "Link" },
+  ],
+];
+
+export const ClipPathLinks = ({
+  groups = DEFAULT_LINK_GROUPS,
+  className = "",
+}) => {
   return (
-    <div className="divide-y divide-primary border border-primary rounded-xl overflow-hidden">
-      <div className="grid grid-cols-2 divide-x divide-primary">
-        <LinkBox Icon={Globe} href="#" />
-        <LinkBox Icon={ShoppingBag} href="#" />
-      </div>
-      <div className="grid grid-cols-4 divide-x divide-primary">
-        <LinkBox Icon={Apple} href="#" />
-        <LinkBox Icon={Siren} href="#" />
-        <LinkBox Icon={Play} href="#" />
-        <LinkBox Icon={Cloud} href="#" />
-      </div>
-      <div className="grid grid-cols-3 divide-x divide-primary">
-        <LinkBox Icon={Code2} href="#" />
-        <LinkBox Icon={Music} href="#" />
-        <LinkBox Icon={Link2} href="#" />
-      </div>
+    <div
+      className={`divide-y divide-primary border border-primary rounded-xl overflow-hidden ${className}`.trim()}
+    >
+      {groups.map((group, groupIndex) => (
+        <div
+          key={groupIndex}
+          className="grid divide-x divide-primary"
+          style={{
+            gridTemplateColumns: `repeat(${group.length}, minmax(0, 1fr))`,
+          }}
+        >
+          {group.map(({ Icon, href, label }) => (
+            <LinkBox
+              key={label || href}
+              Icon={Icon}
+              href={href}
+              label={label}
+            />
+          ))}
+        </div>
+      ))}
     </div>
   );
 };
-
-export default ClipPathLinks;
