@@ -7,7 +7,7 @@ import {
 } from "motion/react";
 import React, { useRef } from "react";
 
-export default function VelocityText({ text, heightClass = "h-[400px]" }) {
+export const VelocityText = ({ text, heightClass = "h-[400px]" }) => {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -50,4 +50,4 @@ export default function VelocityText({ text, heightClass = "h-[400px]" }) {
       </div>
     </section>
   );
-}
+};

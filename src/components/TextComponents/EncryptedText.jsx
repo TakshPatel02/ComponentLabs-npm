@@ -4,12 +4,12 @@ import { motion } from "motion/react";
 const CHARACTERS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|:;<>,.?/~";
 
-export default function EncryptedText({
+export const EncryptedText = ({
   text,
   interval = 50,
   duration = 3000,
   className = "",
-}) {
+}) => {
   const [displayText, setDisplayText] = useState("");
   const [isAnimating, setIsAnimating] = useState(true);
 
