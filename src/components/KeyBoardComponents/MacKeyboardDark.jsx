@@ -204,7 +204,7 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
   );
 }
 
-const MacKeyboardDark = () => {
+export const MacKeyboardDark = () => {
   const [pressedKeys, setPressedKeys] = useState({});
   const [audioBuffer, setAudioBuffer] = useState(null);
   const audioContextRef = useRef(null);
@@ -404,5 +404,3 @@ const MacKeyboardDark = () => {
     </div>
   );
 };
-
-export default MacKeyboardDark;

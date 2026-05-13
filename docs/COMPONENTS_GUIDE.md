@@ -17,6 +17,7 @@ Notes:
 
 - AnimatedFAQ
 - CreativeHighlightText
+- EncryptedText
 - EncryptButton
 - MagnetButton
 - NeumorphismButton
@@ -25,6 +26,7 @@ Notes:
 - TakeoverLinks
 - StaggeredEntranceHero
 - StripeWriter
+- VelocityText
 - TerminalTypingCard
 - VintageFader
 
@@ -108,6 +110,48 @@ Props
 Notes
 
 - This component includes inline SVG accents and animated sparkles. You can safely change `text` and `decorText` strings; styles follow Tailwind classes in the component.
+
+---
+
+## EncryptedText
+
+- File: src/components/TextComponents/EncryptedText.jsx
+
+Import
+
+```jsx
+import { EncryptedText } from "../src/components/TextComponents/EncryptedText";
+```
+
+Default usage
+
+```jsx
+<EncryptedText text="Access granted" />
+```
+
+Props
+
+- `text` (string) — text to scramble and reveal. Required.
+- `interval` (number) — update interval in ms for each scramble tick. Default: `50`.
+- `duration` (number) — total reveal duration in ms. Default: `3000`.
+- `className` (string) — optional classes appended to the text wrapper.
+
+Examples
+
+```jsx
+<EncryptedText
+  text="Initializing secure channel..."
+  interval={35}
+  duration={2000}
+  className="text-sm md:text-base text-emerald-400"
+/>
+```
+
+Notes
+
+- Uses randomized glyphs from an internal character set and progressively reveals the original text.
+- Spaces in the source text are preserved during animation.
+- Very long strings with very small `interval` values may increase render updates.
 
 ---
 
@@ -408,6 +452,50 @@ Examples
 Notes
 
 - The component animates characters individually with Motion variants.
+
+---
+
+## VelocityText
+
+- File: src/components/TextComponents/VelocityText.jsx
+
+Import
+
+```jsx
+import { VelocityText } from "../src/components/TextComponents/VelocityText";
+```
+
+Default usage
+
+```jsx
+<VelocityText text="Scroll to distort and slide this message" />
+```
+
+Props
+
+- `text` (string) — content rendered in the horizontal animated line. Default: built-in persistence quote.
+- `heightClass` (string) — Tailwind height utility applied to viewport and sticky area. Default: `"h-[400px]"`.
+
+Examples
+
+```jsx
+<VelocityText
+  text="Design systems become unforgettable when motion has intent."
+  heightClass="h-[320px]"
+/>
+```
+
+```jsx
+<div className="max-w-screen overflow-hidden">
+  <VelocityText heightClass="h-[500px]" />
+</div>
+```
+
+Notes
+
+- Scroll progress drives horizontal translation while scroll velocity drives skew, creating a kinetic marquee effect.
+- The component uses an internal scroll container (`overflow-y-auto`) with a large virtual height (`h-[800vh]`) to produce enough scroll distance.
+- Best used in full-width sections with clipped overflow so long text stays visually clean.
 
 ---
 

@@ -193,6 +193,155 @@ export default function App() {
 }
 ```
 
+## 📦 Public Usage Docs
+
+The following components are the most ready for public npm use in host apps. Each section includes the default import, common props, and the main integration note you need to know before shipping it in a real project.
+
+### UploadButton
+
+- File: `src/components/ButtonComponents/UploadButton.jsx`
+
+Import
+
+```jsx
+import { UploadButton } from "component-labs";
+```
+
+Default usage
+
+```jsx
+<UploadButton
+  onUpload={async (files) => {
+    const formData = new FormData();
+    formData.append("file", files[0]);
+
+    await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+  }}
+/>
+```
+
+Props
+
+- `onUpload` (function, required) - async upload handler that receives the selected `FileList` and should return a promise.
+- `accept` (string) - accepted file types, for example `"image/*"` or `".pdf"`.
+- `multiple` (boolean) - allows selecting multiple files. Default: `false`.
+- `idleText` (string) - label shown before upload starts. Default: `"Upload File"`.
+- `uploadingText` (string) - label shown while the upload promise is pending. Default: `"Uploading..."`.
+- `successText` (string) - label shown after the upload resolves. Default: `"Complete"`.
+- `className` (string) - additional classes for the button wrapper.
+- `onSuccess` (function) - optional callback fired after a successful upload.
+- `onError` (function) - optional callback fired if the upload promise rejects.
+
+Notes
+
+- This component only shows the success state after `onUpload` resolves, so it is safe for real upload flows.
+- The file input is hidden and triggered by the button, so host apps do not need to manage the input UI themselves.
+
+### KanbanBoard
+
+- File: `src/components/OtherComponents/KanbanBoard.jsx`
+
+Import
+
+```jsx
+import { KanbanBoard } from "component-labs";
+```
+
+Default usage
+
+```jsx
+<KanbanBoard />
+```
+
+Props
+
+- `initialTasks` (Array) - starting task list. Each task should look like `{ id, column, tag, title }`.
+- `columns` (Array) - board columns. Each column should look like `{ id, title, canAdd, isTrash }`.
+- `onTasksChange` (function) - called whenever the task list changes.
+- `onTaskMove` (function) - called when a task is moved to another column.
+- `onTaskAdd` (function) - called when a new task is created.
+- `onTaskDelete` (function) - called when a task is dropped into the trash column.
+- `className` (string) - additional classes for the board container.
+- `style` (object) - inline styles for the outer container.
+
+Example with custom data
+
+```jsx
+const columns = [
+  { id: "backlog", title: "BACKLOG", canAdd: true },
+  { id: "doing", title: "DOING" },
+  { id: "done", title: "DONE" },
+  { id: "trash", title: "TRASH", isTrash: true },
+];
+
+const tasks = [
+  { id: "a1", column: "backlog", tag: "API", title: "Draft upload endpoint" },
+  { id: "b2", column: "doing", tag: "UI", title: "Polish board spacing" },
+];
+
+<KanbanBoard initialTasks={tasks} columns={columns} />;
+```
+
+Notes
+
+- The component manages drag-and-drop internally, so you can use it immediately without extra state wiring.
+- Use the callback props if you want to sync the board to a backend, local storage, or a parent store.
+
+### MacKeyboard
+
+- File: `src/components/KeyBoardComponents/MacKeyboard.jsx`
+
+Import
+
+```jsx
+import { MacKeyboard } from "component-labs";
+```
+
+Default usage
+
+```jsx
+<MacKeyboard />
+```
+
+Props
+
+- This component does not expose a public prop API yet.
+
+Notes
+
+- It listens to physical keyboard events and visualizes the matching keys on screen.
+- The sound sprite is loaded from `/sound.ogg`, so host apps must serve that asset from the public root.
+- The component uses browser-only APIs such as `window`, `AudioContext`, and `IntersectionObserver`, so it should be rendered on the client.
+
+### MacKeyboardDark
+
+- File: `src/components/KeyBoardComponents/MacKeyboardDark.jsx`
+
+Import
+
+```jsx
+import { MacKeyboardDark } from "component-labs";
+```
+
+Default usage
+
+```jsx
+<MacKeyboardDark />
+```
+
+Props
+
+- This component does not expose a public prop API yet.
+
+Notes
+
+- It is the dark variant of the Mac keyboard display and shares the same interaction model as `MacKeyboard`.
+- It also expects `/sound.ogg` to be available in the host app's public folder.
+- Like the light variant, it should be used on the client because it depends on browser audio and visibility APIs.
+
 ## 🎨 Customization
 
 All components are built with Tailwind CSS, making them easily customizable through:

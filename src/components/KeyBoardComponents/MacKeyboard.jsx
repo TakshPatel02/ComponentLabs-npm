@@ -204,7 +204,7 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
   );
 }
 
-const MacKeyboard = () => {
+export const MacKeyboard = () => {
   const [pressedKeys, setPressedKeys] = useState({});
   const [audioBuffer, setAudioBuffer] = useState(null);
   const audioContextRef = useRef(null);
@@ -404,5 +404,3 @@ const MacKeyboard = () => {
     </div>
   );
 };
-
-export default MacKeyboard;
