@@ -8,16 +8,16 @@ const ShowcaseCard = ({ category, title, previewHeight, caption, delay }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="group/card break-inside-avoid mb-6 bg-surface oklab-border hover:border-error-warm transition-all duration-300 p-2 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)]"
+      className="group/card break-inside-avoid mb-6 bg-[#fdf8f7] oklab-border hover:border-[#cf2d56] transition-all duration-300 p-2 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)]"
     >
       <div className="p-4 flex justify-between items-start">
         <div>
-          <span className="font-system-micro text-[10px] tracking-[0.15em] text-on-surface-variant/40 uppercase group-hover/card:text-error-warm transition-colors duration-300 block mb-2">
+          <span className="font-system-micro text-[10px] tracking-[0.15em] text-[#48473f]/40 uppercase group-hover/card:text-[#cf2d56] transition-colors duration-300 block mb-2">
             {category}
           </span>
-          <h3 className="font-section-heading text-2xl text-primary leading-tight">{title}</h3>
+          <h3 className="font-section-heading text-2xl text-[#11100a] leading-tight">{title}</h3>
         </div>
-        <button className="text-on-surface-variant/40 hover:text-primary transition-colors p-1">
+        <button className="text-[#48473f]/40 hover:text-[#11100a] transition-colors p-1">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -35,7 +35,7 @@ const ShowcaseCard = ({ category, title, previewHeight, caption, delay }) => {
       </div>
 
       <div className="p-4">
-        <p className="font-editorial-standard italic text-on-surface-variant/60 text-sm">{caption}</p>
+        <p className="font-editorial-standard italic text-[#48473f]/60 text-sm">{caption}</p>
       </div>
     </motion.div>
   );

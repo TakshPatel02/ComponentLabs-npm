@@ -80,7 +80,7 @@ const FloatingParticles = ({ isActive }) => {
             top: `${p.y}%`,
             width: p.size,
             height: p.size,
-            backgroundColor: "var(--color-error-warm)",
+            backgroundColor: "#cf2d56",
           }}
         />
       ))}
@@ -121,14 +121,14 @@ const NeuralLink = ({ heading, imgSrc, subheading, href, index }) => {
       onMouseLeave={() => setIsHovered(false)}
       initial="initial"
       whileHover="whileHover"
-      className="group/link relative flex items-center justify-between border-b border-primary/15 py-5 md:py-8 transition-colors duration-500 hover:border-error-warm/40"
+      className="group/link relative flex items-center justify-between border-b border-[#11100a]/15 py-5 md:py-8 transition-colors duration-500 hover:border-[#cf2d56]/40"
     >
       {/* Neural Scan Line */}
       <motion.div
         className="absolute bottom-0 left-0 h-px z-20"
         style={{
           background:
-            "linear-gradient(90deg, transparent, var(--color-error-warm), transparent)",
+            "linear-gradient(90deg, transparent, #cf2d56, transparent)",
         }}
         initial={{ width: "0%", opacity: 0 }}
         animate={
@@ -158,7 +158,7 @@ const NeuralLink = ({ heading, imgSrc, subheading, href, index }) => {
       <div className="relative z-10">
         {/* Index Number */}
         <motion.span
-          className="font-mono-code text-[10px] text-error-warm/60 tracking-widest uppercase block mb-1"
+          className="font-mono-code text-[10px] text-[#cf2d56]/60 tracking-widest uppercase block mb-1"
           initial={{ opacity: 0.4 }}
           animate={isHovered ? { opacity: 1 } : { opacity: 0.4 }}
           transition={{ duration: 0.3 }}
@@ -177,7 +177,7 @@ const NeuralLink = ({ heading, imgSrc, subheading, href, index }) => {
             staggerChildren: 0.04,
             delayChildren: 0.1,
           }}
-          className="relative z-10 block font-section-heading text-[36px] md:text-[56px] leading-none text-primary transition-colors duration-500 group-hover/link:text-error-warm tracking-tight"
+          className="relative z-10 block font-section-heading text-[36px] md:text-[56px] leading-none text-[#11100a] transition-colors duration-500 group-hover/link:text-[#cf2d56] tracking-tight"
         >
           {heading.split("").map((l, i) => (
             <motion.span
@@ -195,7 +195,7 @@ const NeuralLink = ({ heading, imgSrc, subheading, href, index }) => {
         </motion.span>
 
         {/* Scrambled Subheading */}
-        <span className="relative z-10 mt-2 block font-mono-code text-[12px] md:text-[13px] text-on-surface-variant tracking-wider transition-colors duration-500 group-hover/link:text-error-warm/70">
+        <span className="relative z-10 mt-2 block font-mono-code text-[12px] md:text-[13px] text-[#48473f] tracking-wider transition-colors duration-500 group-hover/link:text-[#cf2d56]/70">
           {scrambledSub}
         </span>
       </div>
@@ -217,7 +217,7 @@ const NeuralLink = ({ heading, imgSrc, subheading, href, index }) => {
             whileHover: { scale: 1.15, opacity: 1 },
           }}
           transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.05 }}
-          className="absolute -inset-1.5 rounded-xl border border-error-warm/20"
+          className="absolute -inset-1.5 rounded-xl border border-[#cf2d56]/20"
         />
 
         {/* The Image */}
@@ -277,9 +277,9 @@ const NeuralLink = ({ heading, imgSrc, subheading, href, index }) => {
             ease: "easeInOut",
           }}
         >
-          <Sparkles className="w-4 h-4 text-error-warm/60" />
+          <Sparkles className="w-4 h-4 text-[#cf2d56]/60" />
         </motion.div>
-        <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover/link:text-error-warm transition-colors" />
+        <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-[#11100a] group-hover/link:text-[#cf2d56] transition-colors" />
       </motion.div>
     </motion.a>
   );
@@ -321,14 +321,14 @@ const LINKS_DATA = [
 
 export const NeuralHoverLinks = () => {
   return (
-    <section className="relative overflow-hidden rounded-xl border border-primary/15 bg-cursor-cream p-6 md:p-10">
+    <section className="relative overflow-hidden rounded-xl border border-[#11100a]/15 bg-[#f2f1ed] p-6 md:p-10">
       {/* Subtle grid background pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
           backgroundImage: `
-            linear-gradient(var(--color-primary) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-primary) 1px, transparent 1px)
+            linear-gradient(#11100a 1px, transparent 1px),
+            linear-gradient(90deg, #11100a 1px, transparent 1px)
           `,
           backgroundSize: "40px 40px",
         }}
@@ -336,10 +336,10 @@ export const NeuralHoverLinks = () => {
 
       {/* Top-left AI badge */}
       <div className="relative z-10 flex items-center gap-2 mb-6 md:mb-8">
-        <span className="material-symbols-outlined text-[16px] text-error-warm">
+        <span className="material-symbols-outlined text-[16px] text-[#cf2d56]">
           neurology
         </span>
-        <span className="font-system-micro text-[10px] text-error-warm/80 tracking-widest uppercase">
+        <span className="font-system-micro text-[10px] text-[#cf2d56]/80 tracking-widest uppercase">
           Neural Navigation · Hover to Explore
         </span>
       </div>

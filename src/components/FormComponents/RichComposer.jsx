@@ -73,26 +73,26 @@ const RichComposer = () => {
 
   return (
     <div className="w-full flex justify-center py-8 px-4">
-      <div className="bg-surface rounded-2xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border max-w-2xl w-full transition-colors">
+      <div className="bg-[#fdf8f7] rounded-2xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border max-w-2xl w-full transition-colors">
 
         {/* Header */}
         <div className="flex items-center gap-2.5 mb-6">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-on-surface-variant/40">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-[#48473f]/40">
             <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
           </svg>
-          <h2 className="text-[22px] text-primary font-medium tracking-tight">Rich Composer</h2>
+          <h2 className="text-[22px] text-[#11100a] font-medium tracking-tight">Rich Composer</h2>
         </div>
 
         {/* Editor */}
-        <div className="bg-surface rounded-xl oklab-border overflow-hidden transition-colors">
+        <div className="bg-[#fdf8f7] rounded-xl oklab-border overflow-hidden transition-colors">
           {/* Toolbar */}
-          <div className="flex items-center gap-1 px-4 py-3 border-b oklab-border bg-on-surface/5 transition-colors">
+          <div className="flex items-center gap-1 px-4 py-3 border-b oklab-border bg-[#1c1b1b]/5 transition-colors">
             {TOOLBAR.map((t, i) =>
-              t.sep ? <div key={i} className="w-px h-5 bg-on-surface/10 mx-1.5" /> : (
+              t.sep ? <div key={i} className="w-px h-5 bg-[#1c1b1b]/10 mx-1.5" /> : (
                 <button
                   key={t.label}
                   onMouseDown={e => { e.preventDefault(); execCommand(t.label); }}
-                  className={`p-1.5 rounded-md transition-colors cursor-pointer ${active[t.label] ? 'bg-on-surface/10 text-primary' : 'text-on-surface-variant/40 hover:text-primary hover:bg-on-surface/10'}`}
+                  className={`p-1.5 rounded-md transition-colors cursor-pointer ${active[t.label] ? 'bg-[#1c1b1b]/10 text-[#11100a]' : 'text-[#48473f]/40 hover:text-[#11100a] hover:bg-[#1c1b1b]/10'}`}
                 >
                   <t.icon size={18} strokeWidth={active[t.label] ? 2.5 : 1.8} />
                 </button>
@@ -103,7 +103,7 @@ const RichComposer = () => {
           {/* ContentEditable area */}
           <div className="relative">
             {!hasContent && (
-              <div className="absolute top-4 left-5 text-on-surface-variant/20 italic text-[15px] font-serif pointer-events-none select-none">
+              <div className="absolute top-4 left-5 text-[#48473f]/20 italic text-[15px] font-serif pointer-events-none select-none">
                 Begin crafting your narrative...
               </div>
             )}
@@ -114,7 +114,7 @@ const RichComposer = () => {
               onInput={updateState}
               onKeyUp={updateState}
               onMouseUp={updateState}
-              className="w-full min-h-[200px] px-5 py-4 text-[15px] text-primary/80 outline-none leading-relaxed font-serif bg-transparent [&_b]:font-bold [&_i]:italic [&_ul]:list-disc [&_ul]:pl-6 [&_a]:text-blue-600 [&_a]:underline"
+              className="w-full min-h-[200px] px-5 py-4 text-[15px] text-[#11100a]/80 outline-none leading-relaxed font-serif bg-transparent [&_b]:font-bold [&_i]:italic [&_ul]:list-disc [&_ul]:pl-6 [&_a]:text-blue-600 [&_a]:underline"
             />
           </div>
         </div>
@@ -126,24 +126,24 @@ const RichComposer = () => {
               {thinking && hasContent ? (
                 <motion.div key="thinking" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2.5 min-w-0">
                   <div className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
-                  <span className="text-[11px] tracking-[0.12em] uppercase font-semibold text-on-surface-variant/60 truncate">
+                  <span className="text-[11px] tracking-[0.12em] uppercase font-semibold text-[#48473f]/60 truncate">
                     Thinking... Generating semantic insights
                   </span>
                 </motion.div>
               ) : (
                 <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0" />
-                  <span className="text-[11px] tracking-[0.12em] uppercase font-semibold text-on-surface-variant/40">Ready</span>
+                  <span className="text-[11px] tracking-[0.12em] uppercase font-semibold text-[#48473f]/40">Ready</span>
                 </motion.div>
               )}
             </AnimatePresence>
-            <span className="text-[11px] tracking-[0.12em] uppercase text-on-surface-variant/40 shrink-0">{charCount.toLocaleString()} Characters</span>
+            <span className="text-[11px] tracking-[0.12em] uppercase text-[#48473f]/40 shrink-0">{charCount.toLocaleString()} Characters</span>
           </div>
 
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="bg-primary text-on-primary px-6 py-2.5 rounded-lg text-[14px] font-medium hover:bg-error-warm transition-colors cursor-pointer shrink-0"
+            className="bg-[#11100a] text-[#ffffff] px-6 py-2.5 rounded-lg text-[14px] font-medium hover:bg-[#cf2d56] transition-colors cursor-pointer shrink-0"
           >
             Publish Content
           </motion.button>

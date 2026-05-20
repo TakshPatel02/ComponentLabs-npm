@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 const LinkNavigation = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 w-full h-full text-primary font-section-heading">
+    <div className="flex flex-col items-center justify-center gap-4 w-full h-full text-[#11100a] font-section-heading">
       <FlipLink href="#">Twitter</FlipLink>
       <FlipLink href="#">Linkedin</FlipLink>
       <FlipLink href="#">Github</FlipLink>

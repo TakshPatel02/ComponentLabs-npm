@@ -67,8 +67,8 @@ export default function NeuralTrace({
     setCurrentStep(-1);
   };
 
-  const textColor = isDark ? "text-white" : "text-primary";
-  const descColor = isDark ? "text-gray-400" : "text-on-surface-variant";
+  const textColor = isDark ? "text-white" : "text-[#11100a]";
+  const descColor = isDark ? "text-gray-400" : "text-[#48473f]";
   const lineColorBase = isDark ? "bg-white/10" : "bg-black/10";
 
   return (
@@ -188,7 +188,7 @@ export default function NeuralTrace({
               <div className="relative shrink-0 z-10 w-2 h-2 flex justify-center items-center">
                 <div
                   className={`w-2 h-2 rounded-full ${
-                    isDark ? "bg-white" : "bg-primary"
+                    isDark ? "bg-white" : "bg-[#11100a]"
                   }`}
                 />
               </div>

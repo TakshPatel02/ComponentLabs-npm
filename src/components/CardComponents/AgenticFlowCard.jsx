@@ -37,9 +37,9 @@ const AgenticFlowCard = () => {
 
   return (
     <div className="w-full flex justify-center py-12 px-4">
-      <div className="relative bg-surface rounded-2xl p-8 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border w-full overflow-hidden transition-colors">
+      <div className="relative bg-[#fdf8f7] rounded-2xl p-8 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border w-full overflow-hidden transition-colors">
 
-        <h2 className="text-[26px] text-primary font-medium mb-8 tracking-tight">Agentic Flow</h2>
+        <h2 className="text-[26px] text-[#11100a] font-medium mb-8 tracking-tight">Agentic Flow</h2>
 
         {/* Steps */}
         <div className="flex flex-col gap-1 mb-8">
@@ -49,12 +49,12 @@ const AgenticFlowCard = () => {
                 {/* Dot + line */}
                 <div className="flex flex-col items-center pt-1">
                   <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: s.dot }} />
-                  {i < STEPS.length - 1 && <div className="w-px grow bg-on-surface-variant/20 mt-1" />}
+                  {i < STEPS.length - 1 && <div className="w-px grow bg-[#48473f]/20 mt-1" />}
                 </div>
                 {/* Text */}
                 <div>
                   <span className="text-[13px] font-bold tracking-[0.15em] uppercase block mb-1.5" style={{ color: s.color }}>{s.label}</span>
-                  <p className="text-[16px] text-on-surface-variant leading-relaxed">{s.desc}</p>
+                  <p className="text-[16px] text-[#48473f] leading-relaxed">{s.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -64,21 +64,21 @@ const AgenticFlowCard = () => {
         {/* Bottom status / review */}
         <AnimatePresence mode="wait">
           {phase === "running" && (
-            <motion.div key="status" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="bg-on-surface/5 rounded-xl px-5 py-4">
+            <motion.div key="status" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="bg-[#1c1b1b]/5 rounded-xl px-5 py-4">
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                <span className="text-[15px] text-primary/80 font-medium">Awaiting completion signal...</span>
+                <span className="text-[15px] text-[#11100a]/80 font-medium">Awaiting completion signal...</span>
               </div>
-              <span className="text-[13px] text-on-surface-variant/40 ml-[18px]">Processing latency: 124ms</span>
+              <span className="text-[13px] text-[#48473f]/40 ml-[18px]">Processing latency: 124ms</span>
             </motion.div>
           )}
 
           {phase === "review" && (
-            <motion.div key="review" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="bg-on-surface/5 rounded-xl px-5 py-4">
-              <p className="text-[15px] text-primary/70 mb-4">Changes ready. Apply modifications?</p>
+            <motion.div key="review" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="bg-[#1c1b1b]/5 rounded-xl px-5 py-4">
+              <p className="text-[15px] text-[#11100a]/70 mb-4">Changes ready. Apply modifications?</p>
               <div className="flex gap-3">
                 <button onClick={() => setPhase("accepted")} className="flex items-center gap-2 px-5 py-2 rounded-lg bg-emerald-600 text-white text-[14px] font-semibold hover:bg-emerald-700 transition-colors cursor-pointer"><Check size={15} /> Accept</button>
-                <button onClick={() => setPhase("rejected")} className="flex items-center gap-2 px-5 py-2 rounded-lg bg-on-surface/10 text-on-surface-variant text-[14px] font-semibold hover:bg-error-warm/10 hover:text-error-warm transition-colors cursor-pointer"><X size={15} /> Reject</button>
+                <button onClick={() => setPhase("rejected")} className="flex items-center gap-2 px-5 py-2 rounded-lg bg-[#1c1b1b]/10 text-[#48473f] text-[14px] font-semibold hover:bg-[#cf2d56]/10 hover:text-[#cf2d56] transition-colors cursor-pointer"><X size={15} /> Reject</button>
               </div>
             </motion.div>
           )}

@@ -17,20 +17,20 @@ const CIRC = 2 * Math.PI * 22; // ~138.2
 
 const STATES = [
   { key: "idle", title: "SYSTEM IDLE", sub: "Awaiting user interaction",
-    icon: <div className="w-[52px] h-[52px] rounded-full bg-on-surface/5 group-hover:bg-on-surface/10 transition-colors flex items-center justify-center"><Play size={20} className="text-on-surface-variant/60 ml-1" /></div>,
-    titleColor: "text-primary", subColor: "text-on-surface-variant/40" },
+    icon: <div className="w-[52px] h-[52px] rounded-full bg-[#1c1b1b]/5 group-hover:bg-[#1c1b1b]/10 transition-colors flex items-center justify-center"><Play size={20} className="text-[#48473f]/60 ml-1" /></div>,
+    titleColor: "text-[#11100a]", subColor: "text-[#48473f]/40" },
   { key: "processing", title: "PROCESSING REQUEST", sub: "TID: 0x442-99B",
     icon: (
       <div className="relative w-[52px] h-[52px] flex items-center justify-center">
         <svg className="absolute inset-0 w-full h-full -rotate-90 drop-shadow-sm">
-          <circle cx="26" cy="26" r="22" stroke="currentColor" className="text-on-surface/10" strokeWidth="2.5" fill="none" />
-          <motion.circle cx="26" cy="26" r="22" stroke="currentColor" className="text-error-warm" strokeWidth="2.5" fill="none" strokeDasharray={CIRC} initial={{ strokeDashoffset: CIRC }} animate={{ strokeDashoffset: CIRC * 0.32 }} transition={{ duration: 1.5, ease: "easeOut" }} strokeLinecap="round" />
+          <circle cx="26" cy="26" r="22" stroke="currentColor" className="text-[#1c1b1b]/10" strokeWidth="2.5" fill="none" />
+          <motion.circle cx="26" cy="26" r="22" stroke="currentColor" className="text-[#cf2d56]" strokeWidth="2.5" fill="none" strokeDasharray={CIRC} initial={{ strokeDashoffset: CIRC }} animate={{ strokeDashoffset: CIRC * 0.32 }} transition={{ duration: 1.5, ease: "easeOut" }} strokeLinecap="round" />
         </svg>
-        <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 2, ease: "linear" }}><RefreshCw size={20} className="text-error-warm" /></motion.div>
+        <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 2, ease: "linear" }}><RefreshCw size={20} className="text-[#cf2d56]" /></motion.div>
       </div>
     ),
-    titleColor: "text-primary", subColor: "text-on-surface-variant/40",
-    counter: { value: 68, color: "text-error-warm" } },
+    titleColor: "text-[#11100a]", subColor: "text-[#48473f]/40",
+    counter: { value: 68, color: "text-[#cf2d56]" } },
   { key: "success", title: "SYNTHESIS COMPLETE", sub: "Data stream verified",
     icon: (
       <div className="w-[52px] h-[52px] rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
@@ -46,17 +46,17 @@ const StateSynthesisCard = () => {
 
   return (
     <div className="w-full flex justify-center py-12 px-4">
-      <div className="bg-surface rounded-2xl p-8 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border flex flex-col gap-8 max-w-2xl w-full cursor-pointer group transition-all hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]" onClick={() => setStep(s => (s + 1) % 3)}>
+      <div className="bg-[#fdf8f7] rounded-2xl p-8 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border flex flex-col gap-8 max-w-2xl w-full cursor-pointer group transition-all hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]" onClick={() => setStep(s => (s + 1) % 3)}>
 
         <div className="flex justify-between items-start">
           <div>
-            <h2 className="text-[28px] text-primary font-medium mb-3 tracking-tight">State Synthesis</h2>
-            <p className="text-on-surface-variant/60 font-serif text-lg leading-relaxed">Seamlessly transitioning between user input and background processing.</p>
+            <h2 className="text-[28px] text-[#11100a] font-medium mb-3 tracking-tight">State Synthesis</h2>
+            <p className="text-[#48473f]/60 font-serif text-lg leading-relaxed">Seamlessly transitioning between user input and background processing.</p>
           </div>
-          <div className="bg-on-surface/5 text-primary/60 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mt-2">Interactive Morph</div>
+          <div className="bg-[#1c1b1b]/5 text-[#11100a]/60 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mt-2">Interactive Morph</div>
         </div>
 
-        <div className="bg-surface-container/30 rounded-xl oklab-border shadow-[inset_0_2px_10px_rgba(0,0,0,0.01)] p-2 min-h-[140px] flex items-center relative overflow-hidden mt-2 transition-colors">
+        <div className="bg-[#f1edeb]/30 rounded-xl oklab-border shadow-[inset_0_2px_10px_rgba(0,0,0,0.01)] p-2 min-h-[140px] flex items-center relative overflow-hidden mt-2 transition-colors">
           <AnimatePresence mode="wait">
             {STATES.map((s, i) => step === i && (
               <motion.div key={s.key} className="flex flex-col sm:flex-row items-center sm:items-center w-full px-4 sm:px-6 py-4 sm:py-3 gap-4 sm:gap-0" {...slide}>
@@ -78,12 +78,12 @@ const StateSynthesisCard = () => {
         </div>
 
         <div className="flex justify-center gap-3 mt-4">
-          {[0, 1, 2].map(i => <motion.div key={i} className={`w-2 h-2 rounded-full ${step === i ? 'bg-error-warm' : 'bg-on-surface/10'}`} layout transition={{ duration: 0.3 }} />)}
+          {[0, 1, 2].map(i => <motion.div key={i} className={`w-2 h-2 rounded-full ${step === i ? 'bg-[#cf2d56]' : 'bg-[#1c1b1b]/10'}`} layout transition={{ duration: 0.3 }} />)}
         </div>
 
         <div className="border-t oklab-border pt-8 mt-2 flex justify-between items-center transition-colors">
-          <span className="text-[11px] tracking-[0.15em] uppercase font-semibold text-on-surface-variant/40">Framer Motion API: AnimatePresence</span>
-          <ExternalLink size={16} className="text-on-surface-variant/20" />
+          <span className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#48473f]/40">Framer Motion API: AnimatePresence</span>
+          <ExternalLink size={16} className="text-[#48473f]/20" />
         </div>
       </div>
     </div>

@@ -68,9 +68,9 @@ const TakeoverLinkRow = ({ label, href, color, onHoverStart }) => {
       href={href}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className="relative block overflow-hidden border-b border-primary/20 py-2 md:py-3"
+      className="relative block overflow-hidden border-b border-[#11100a]/20 py-2 md:py-3"
     >
-      <span className="relative block overflow-hidden font-light uppercase tracking-wide text-primary">
+      <span className="relative block overflow-hidden font-light uppercase tracking-wide text-[#11100a]">
         <SplitText
           text={label}
           className="text-5xl leading-none md:text-7xl lg:text-8xl"
@@ -108,7 +108,7 @@ export const TakeoverLinks = ({ links = DEFAULT_LINKS, className = "" }) => {
     <section
       ref={containerScope}
       onMouseLeave={handleContainerLeave}
-      className={`relative overflow-hidden rounded-xl border border-primary/25 bg-cursor-cream p-6 md:p-10 ${className}`.trim()}
+      className={`relative overflow-hidden rounded-xl border border-[#11100a]/25 bg-[#f2f1ed] p-6 md:p-10 ${className}`.trim()}
     >
       <span
         className="takeover-bg pointer-events-none absolute inset-0"

@@ -27,7 +27,7 @@ export default function MinimalAuth() {
   return (
     <div className="flex w-full items-center justify-center p-4">
       {/* Outer container matching the screenshot's warm grey/beige tone */}
-      <div className="relative overflow-hidden oklab-border bg-surface-container/60 p-10 shadow-sm transition-all duration-500 ease-in-out w-full sm:w-[400px] min-w-[280px]">
+      <div className="relative overflow-hidden oklab-border bg-[#f1edeb]/60 p-10 shadow-sm transition-all duration-500 ease-in-out w-full sm:w-[400px] min-w-[280px]">
         
         {status === 'success' ? (
           /* Success State - smooth fade-in replacement */
@@ -35,17 +35,17 @@ export default function MinimalAuth() {
             <div className="mb-6 rounded-full bg-emerald-500/10 p-4 text-emerald-500">
               <CheckCircle className="h-10 w-10" strokeWidth={2} />
             </div>
-            <h3 className="mb-2 text-2xl font-medium text-primary">Access Granted</h3>
-            <p className="text-[15px] text-on-surface-variant/60">Secure session established for {email}</p>
+            <h3 className="mb-2 text-2xl font-medium text-[#11100a]">Access Granted</h3>
+            <p className="text-[15px] text-[#48473f]/60">Secure session established for {email}</p>
           </div>
         ) : (
           /* Form State */
           <div className={`transition-all duration-500 ${status === 'loading' ? 'opacity-50 blur-[2px]' : 'opacity-100'}`}>
             <div className="mb-8">
-              <span className="mb-4 block text-[13px] font-bold tracking-[0.15em] text-on-surface-variant/40 uppercase">
+              <span className="mb-4 block text-[13px] font-bold tracking-[0.15em] text-[#48473f]/40 uppercase">
                 Entry Point
               </span>
-              <h2 className="text-[28px] font-normal tracking-tight text-primary">
+              <h2 className="text-[28px] font-normal tracking-tight text-[#11100a]">
                 Minimal Auth
               </h2>
             </div>
@@ -53,7 +53,7 @@ export default function MinimalAuth() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               {/* Email Field */}
               <div>
-                <label className="mb-2 block text-[13px] font-semibold tracking-wider text-on-surface-variant/60 uppercase">
+                <label className="mb-2 block text-[13px] font-semibold tracking-wider text-[#48473f]/60 uppercase">
                   Email Address
                 </label>
                 <div className="relative">
@@ -64,14 +64,14 @@ export default function MinimalAuth() {
                     placeholder="name@example.com"
                     disabled={status === 'loading'}
                     required
-                    className="w-full border-b oklab-border bg-surface/50 px-4 py-3.5 text-base text-primary placeholder-on-surface-variant/30 transition-colors focus:border-error-warm/40 focus:bg-surface/80 focus:outline-none disabled:opacity-70"
+                    className="w-full border-b oklab-border bg-[#fdf8f7]/50 px-4 py-3.5 text-base text-[#11100a] placeholder-[#48473f]/30 transition-colors focus:border-[#cf2d56]/40 focus:bg-[#fdf8f7]/80 focus:outline-none disabled:opacity-70"
                   />
                 </div>
               </div>
 
               {/* Password Field */}
               <div>
-                <label className="mb-2 block text-[13px] font-semibold tracking-wider text-on-surface-variant/60 uppercase">
+                <label className="mb-2 block text-[13px] font-semibold tracking-wider text-[#48473f]/60 uppercase">
                   Password
                 </label>
                 <div className="relative">
@@ -82,7 +82,7 @@ export default function MinimalAuth() {
                     placeholder="••••••••"
                     disabled={status === 'loading'}
                     required
-                    className="w-full border-b oklab-border bg-surface/50 px-4 py-3.5 text-base text-primary placeholder-on-surface-variant/30 transition-colors focus:border-error-warm/40 focus:bg-surface/80 focus:outline-none disabled:opacity-70"
+                    className="w-full border-b oklab-border bg-[#fdf8f7]/50 px-4 py-3.5 text-base text-[#11100a] placeholder-[#48473f]/30 transition-colors focus:border-[#cf2d56]/40 focus:bg-[#fdf8f7]/80 focus:outline-none disabled:opacity-70"
                   />
                 </div>
               </div>
@@ -91,7 +91,7 @@ export default function MinimalAuth() {
               <button
                 type="submit"
                 disabled={status === 'loading' || !email || !password}
-                className="mt-2 flex w-full items-center justify-center bg-primary text-on-primary py-4 text-[16px] font-semibold transition-all hover:bg-error-warm active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-2 flex w-full items-center justify-center bg-[#11100a] text-[#ffffff] py-4 text-[16px] font-semibold transition-all hover:bg-[#cf2d56] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {status === 'loading' ? (
                   <Loader2 className="h-5 w-5 animate-spin" />

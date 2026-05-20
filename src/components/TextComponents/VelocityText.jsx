@@ -42,7 +42,7 @@ export const VelocityText = ({ text, heightClass = "h-[400px]" }) => {
         >
           <motion.p
             style={{ skewX, x }}
-            className="origin-bottom-left whitespace-nowrap text-6xl font-display-hero uppercase leading-[0.85] tracking-tighter text-primary md:text-8xl md:leading-[0.85] px-4"
+            className="origin-bottom-left whitespace-nowrap text-6xl font-display-hero uppercase leading-[0.85] tracking-tighter text-[#11100a] md:text-8xl md:leading-[0.85] px-4"
           >
             {content}
           </motion.p>

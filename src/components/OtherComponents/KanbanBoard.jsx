@@ -176,30 +176,30 @@ export const KanbanBoard = ({
 
   return (
     <div
-      className={`w-full bg-surface-container/60 min-h-[600px] p-4 sm:p-6 md:p-10 rounded-xl oklab-border flex flex-col font-ui-body transition-colors ${className}`}
+      className={`w-full bg-[#f1edeb]/60 min-h-[600px] p-4 sm:p-6 md:p-10 rounded-xl oklab-border flex flex-col font-ui-body transition-colors ${className}`}
       style={style}
     >
       {/* Kanban Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 pb-6 oklab-border border-b gap-4">
-        <h2 className="font-section-heading text-xl md:text-2xl tracking-tight text-primary">
+        <h2 className="font-section-heading text-xl md:text-2xl tracking-tight text-[#11100a]">
           ENGINEERED<span className="font-normal opacity-60">KANBAN</span>
         </h2>
-        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[10px] sm:text-[11px] font-system-micro tracking-widest uppercase text-on-surface-variant/60">
-          <span className="text-primary border-b border-primary pb-1">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[10px] sm:text-[11px] font-system-micro tracking-widest uppercase text-[#48473f]/60">
+          <span className="text-[#11100a] border-b border-[#11100a] pb-1">
             Board
           </span>
-          <span className="hover:text-primary cursor-pointer pb-1 transition-colors">
+          <span className="hover:text-[#11100a] cursor-pointer pb-1 transition-colors">
             Team
           </span>
-          <span className="hover:text-primary cursor-pointer pb-1 transition-colors">
+          <span className="hover:text-[#11100a] cursor-pointer pb-1 transition-colors">
             Analytics
           </span>
-          <span className="hover:text-primary cursor-pointer pb-1 transition-colors">
+          <span className="hover:text-[#11100a] cursor-pointer pb-1 transition-colors">
             Archive
           </span>
         </div>
         <div className="hidden md:flex items-center gap-4">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+          <div className="w-8 h-8 rounded-full bg-[#11100a] flex items-center justify-center text-[#ffffff]">
             <span className="material-symbols-outlined text-[16px]">
               notifications
             </span>
@@ -224,11 +224,11 @@ export const KanbanBoard = ({
             >
               <div className="flex justify-between items-center px-2 mb-4">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-system-micro text-[12px] tracking-widest font-bold text-primary">
+                  <h3 className="font-system-micro text-[12px] tracking-widest font-bold text-[#11100a]">
                     {col.title}
                   </h3>
                   {!isTrash && (
-                    <span className="bg-on-surface/10 text-on-surface-variant font-mono text-[10px] px-2 py-0.5 rounded-full">
+                    <span className="bg-[#1c1b1b]/10 text-[#48473f] font-mono text-[10px] px-2 py-0.5 rounded-full">
                       {String(colTasks.length).padStart(2, "0")}
                     </span>
                   )}
@@ -236,7 +236,7 @@ export const KanbanBoard = ({
                 {col.canAdd && (
                   <button
                     onClick={() => setIsAdding(true)}
-                    className="text-on-surface-variant/40 hover:text-primary transition-colors"
+                    className="text-[#48473f]/40 hover:text-[#11100a] transition-colors"
                   >
                     <svg
                       width="16"
@@ -280,7 +280,7 @@ export const KanbanBoard = ({
                         if (!newTaskText.trim()) setIsAdding(false);
                       }}
                       placeholder="Enter task description..."
-                      className="w-full bg-surface oklab-border rounded-lg p-4 font-editorial-standard text-[16px] outline-none focus:border-on-surface-variant/40 shadow-sm text-primary"
+                      className="w-full bg-[#fdf8f7] oklab-border rounded-lg p-4 font-editorial-standard text-[16px] outline-none focus:border-[#48473f]/40 shadow-sm text-[#11100a]"
                     />
                   </form>
                 )}
@@ -303,7 +303,7 @@ export const KanbanBoard = ({
                           stiffness: 400,
                           damping: 30,
                         }}
-                        className={`bg-surface rounded-[10px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)] oklab-border cursor-grab active:cursor-grabbing hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all ${
+                        className={`bg-[#fdf8f7] rounded-[10px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)] oklab-border cursor-grab active:cursor-grabbing hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all ${
                           draggedTaskId === task.id ? "opacity-50" : ""
                         }`}
                       >
@@ -312,7 +312,7 @@ export const KanbanBoard = ({
                             className={`font-system-micro text-[10px] tracking-widest uppercase ${
                               task.column === "complete"
                                 ? "text-emerald-500/70"
-                                : "text-on-surface-variant/50"
+                                : "text-[#48473f]/50"
                             }`}
                           >
                             {task.tag}
@@ -331,7 +331,7 @@ export const KanbanBoard = ({
                               <polyline points="22 4 12 14.01 9 11.01"></polyline>
                             </svg>
                           ) : (
-                            <span className="text-on-surface-variant/30">
+                            <span className="text-[#48473f]/30">
                               <svg
                                 width="14"
                                 height="14"
@@ -350,8 +350,8 @@ export const KanbanBoard = ({
                         <p
                           className={`font-editorial-standard text-[16px] leading-relaxed ${
                             task.column === "complete"
-                              ? "text-on-surface-variant/40 line-through decoration-on-surface-variant/20"
-                              : "text-primary/90"
+                              ? "text-[#48473f]/40 line-through decoration-on-surface-variant/20"
+                              : "text-[#11100a]/90"
                           }`}
                         >
                           {task.title}
@@ -363,8 +363,8 @@ export const KanbanBoard = ({
                   <div
                     className={`h-[300px] rounded-xl border-2 border-dashed flex flex-col items-center justify-center gap-4 transition-colors ${
                       activeColumnId === col.id
-                        ? "border-on-surface-variant/40 bg-on-surface/5"
-                        : "border-on-surface-variant/20"
+                        ? "border-[#48473f]/40 bg-[#1c1b1b]/5"
+                        : "border-[#48473f]/20"
                     }`}
                   >
                     <svg
@@ -375,15 +375,15 @@ export const KanbanBoard = ({
                       stroke="currentColor"
                       className={
                         activeColumnId === col.id
-                          ? "text-primary/60"
-                          : "text-on-surface-variant/30"
+                          ? "text-[#11100a]/60"
+                          : "text-[#48473f]/30"
                       }
                       strokeWidth="1.5"
                     >
                       <polyline points="3 6 5 6 21 6"></polyline>
                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                     </svg>
-                    <span className="font-system-micro text-[10px] tracking-widest uppercase text-on-surface-variant/40">
+                    <span className="font-system-micro text-[10px] tracking-widest uppercase text-[#48473f]/40">
                       Trash Drop Zone
                     </span>
                   </div>

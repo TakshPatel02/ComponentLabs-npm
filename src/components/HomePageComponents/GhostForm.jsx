@@ -25,7 +25,7 @@ const GhostInput = ({
             scale: isFocused || value ? 0.85 : 1,
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="absolute left-0 top-2 text-sm text-on-surface-variant origin-left pointer-events-none"
+          className="absolute left-0 top-2 text-sm text-[#48473f] origin-left pointer-events-none"
         >
           {label}
         </motion.label>
@@ -39,7 +39,7 @@ const GhostInput = ({
           onBlur={() => setIsFocused(false)}
           placeholder={isFocused ? "" : placeholder}
           rows={isTextarea ? 4 : undefined}
-          className={`w-full bg-transparent border-none outline-none py-2 text-on-surface placeholder:text-on-surface-variant/40 placeholder:transition-opacity placeholder:duration-300 ${isTextarea ? "resize-none" : ""}`}
+          className={`w-full bg-transparent border-none outline-none py-2 text-[#1c1b1b] placeholder:text-[#48473f]/40 placeholder:transition-opacity placeholder:duration-300 ${isTextarea ? "resize-none" : ""}`}
         />
 
         {/* Base underline */}
@@ -50,7 +50,7 @@ const GhostInput = ({
           initial={{ scaleX: 0 }}
           animate={{ scaleX: isFocused ? 1 : 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute bottom-0 left-0 right-0 h-px bg-on-surface origin-left"
+          className="absolute bottom-0 left-0 right-0 h-px bg-[#1c1b1b] origin-left"
         />
       </div>
     </div>
@@ -87,7 +87,7 @@ export default function GhostForm() {
           type="submit"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="mt-6 px-6 py-4 bg-primary text-on-primary text-sm font-medium tracking-wide rounded-md overflow-hidden relative group w-full max-w-75 mx-auto md:mx-0 border border-border-fallback-10 min-h-14 flex items-center justify-center"
+          className="mt-6 px-6 py-4 bg-[#11100a] text-[#ffffff] text-sm font-medium tracking-wide rounded-md overflow-hidden relative group w-full max-w-75 mx-auto md:mx-0 border border-border-fallback-10 min-h-14 flex items-center justify-center"
         >
           <motion.span
             className="block"
@@ -97,7 +97,7 @@ export default function GhostForm() {
             Submit
           </motion.span>
           <motion.span
-            className="absolute inset-0 flex items-center justify-center bg-surface-container-highest text-on-surface"
+            className="absolute inset-0 flex items-center justify-center bg-[#e6e2e0] text-[#1c1b1b]"
             initial={{ y: "100%" }}
             animate={{ y: isSubmitting ? "0%" : "100%" }}
             transition={{ duration: 0.3 }}

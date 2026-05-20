@@ -91,12 +91,12 @@ const LinkBox = ({ Icon, href, label = "Brand link" }) => {
       className="relative grid h-20 w-full place-content-center sm:h-24 md:h-28"
       aria-label={label}
     >
-      <Icon className="h-5 w-5 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-primary" />
+      <Icon className="h-5 w-5 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-[#11100a]" />
 
       <div
         ref={scope}
         style={{ clipPath: BOTTOM_RIGHT_CLIP }}
-        className="absolute inset-0 grid place-content-center bg-primary text-cursor-cream"
+        className="absolute inset-0 grid place-content-center bg-[#11100a] text-[#f2f1ed]"
       >
         <Icon className="h-5 w-5 sm:h-7 sm:w-7 lg:h-8 lg:w-8" />
       </div>
@@ -128,12 +128,12 @@ export const ClipPathLinks = ({
 }) => {
   return (
     <div
-      className={`divide-y divide-primary border border-primary rounded-xl overflow-hidden ${className}`.trim()}
+      className={`divide-y divide-[#11100a] border border-[#11100a] rounded-xl overflow-hidden ${className}`.trim()}
     >
       {groups.map((group, groupIndex) => (
         <div
           key={groupIndex}
-          className="grid divide-x divide-primary"
+          className="grid divide-x divide-[#11100a]"
           style={{
             gridTemplateColumns: `repeat(${group.length}, minmax(0, 1fr))`,
           }}

@@ -48,7 +48,7 @@ export const StaggeredEntranceHero = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="w-full max-w-container-max bg-cursor-cream/50 rounded-[20px] oklab-border p-8 sm:p-12 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-700 hover:shadow-[0_40px_100px_-20px_rgba(38,37,30,0.08)]"
+        className="w-full max-w-container-max bg-[#f2f1ed]/50 rounded-[20px] oklab-border p-8 sm:p-12 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-700 hover:shadow-[0_40px_100px_-20px_rgba(38,37,30,0.08)]"
       >
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none select-none overflow-hidden">
@@ -59,12 +59,12 @@ export const StaggeredEntranceHero = () => {
           {/* Main Headline */}
           <motion.h1 
             variants={itemVariants}
-            className="font-display-hero text-4xl sm:text-5xl md:text-[84px] leading-[1.1] text-primary tracking-tighter mb-8 max-w-4xl"
+            className="font-display-hero text-4xl sm:text-5xl md:text-[84px] leading-[1.1] text-[#11100a] tracking-tighter mb-8 max-w-4xl"
           >
             Design systems with{" "}
             <motion.span 
               variants={highlightVariants}
-              className="italic text-error-warm"
+              className="italic text-[#cf2d56]"
             >
               literary
             </motion.span>{" "}
@@ -74,7 +74,7 @@ export const StaggeredEntranceHero = () => {
           {/* Sub-description */}
           <motion.p 
             variants={itemVariants}
-            className="font-editorial-body text-xl md:text-2xl text-on-surface-variant max-w-2xl italic leading-relaxed mb-12 opacity-80"
+            className="font-editorial-body text-xl md:text-2xl text-[#48473f] max-w-2xl italic leading-relaxed mb-12 opacity-80"
           >
             We combine the aggressive, engineered precision of compressed gothic typography with the warm, calligraphic soul of classic serifs. A delicate balance of logic and emotion.
           </motion.p>
@@ -84,10 +84,10 @@ export const StaggeredEntranceHero = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center gap-6"
           >
-            <button className="bg-primary text-on-primary font-button-label text-button-label px-10 py-5 rounded-lg shadow-lg hover:shadow-xl hover:opacity-90 transition-all active:scale-[0.98]">
+            <button className="bg-[#11100a] text-[#ffffff] font-button-label text-button-label px-10 py-5 rounded-lg shadow-lg hover:shadow-xl hover:opacity-90 transition-all active:scale-[0.98]">
               Explore Typography
             </button>
-            <button className="bg-transparent oklab-border text-primary font-button-label text-button-label px-10 py-5 rounded-lg hover:bg-on-surface/5 transition-all active:scale-[0.98]">
+            <button className="bg-transparent oklab-border text-[#11100a] font-button-label text-button-label px-10 py-5 rounded-lg hover:bg-[#1c1b1b]/5 transition-all active:scale-[0.98]">
               View Guidelines
             </button>
           </motion.div>
