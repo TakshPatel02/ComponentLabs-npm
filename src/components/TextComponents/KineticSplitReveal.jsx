@@ -29,7 +29,7 @@ export const KineticSplitReveal = ({
 
   return (
     <div
-      className={`relative w-full min-h-75 flex flex-col justify-center items-center py-12 select-none ${className}`}
+      className={`relative w-full min-h-[300px] flex flex-col justify-center items-center py-12 select-none ${className}`}
     >
       <div className="relative w-full flex justify-center py-12 overflow-visible">
         {/* Inner Reveal Layer (Quote) */}
@@ -52,10 +52,11 @@ export const KineticSplitReveal = ({
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="relative inline-block overflow-visible cursor-crosshair pointer-events-auto select-none"
+          className="relative inline-block overflow-visible cursor-crosshair pointer-events-auto select-none bg-transparent"
         >
           {/* Top Half */}
           <div
+            className="pointer-events-none"
             style={{
               clipPath: "inset(0 0 50% 0)",
               transform: isHovered
@@ -73,7 +74,7 @@ export const KineticSplitReveal = ({
 
           {/* Bottom Half (Duplicated) */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 pointer-events-none"
             style={{
               clipPath: "inset(50% 0 0 0)",
               transform: isHovered

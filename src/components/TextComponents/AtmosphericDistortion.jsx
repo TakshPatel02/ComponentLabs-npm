@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { motion } from "motion/react";
 
 export const AtmosphericDistortion = ({
@@ -17,6 +17,8 @@ export const AtmosphericDistortion = ({
   rotateAngle = 10,
   blurAmount = 4,
 }) => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   // Split text into characters
   const characters = useMemo(() => {
     return text.split("");
@@ -44,18 +46,21 @@ export const AtmosphericDistortion = ({
       >
         {characters.map((char, index) => {
           // Calculate unique wave frequencies for ambient float based on index
-          const durationX = 4.5 + (index % 3) * 1.5;
           const durationY = 3.5 + (index % 2) * 1.2;
+          const isCharHovered = hoveredIndex === index;
 
           return (
             <span
               key={index}
-              className="inline-block overflow-visible"
+              className="inline-block overflow-visible relative cursor-pointer"
               style={{ display: "inline-block" }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Layer 1: Ambient Float Motion (Living atmosphere) */}
               <motion.span
-                className="inline-block overflow-visible"
+                className="inline-block overflow-visible pointer-events-none"
+                style={{ display: "inline-block" }}
                 animate={{
                   y: [-3, 3, -3],
                   x: [-1.5, 1.5, -1.5],
@@ -70,15 +75,15 @@ export const AtmosphericDistortion = ({
                 {/* Layer 2: Interactive Spring Distortion with Native Layout displacement */}
                 <motion.span
                   layout
-                  className="inline-block origin-center whitespace-pre cursor-pointer transition-colors duration-300"
+                  className="inline-block origin-center whitespace-pre pointer-events-none"
                   style={{ display: "inline-block" }}
-                  whileHover={{
-                    x: driftX * (index % 2 === 0 ? 1 : -1),
-                    y: driftY,
-                    rotate: rotateAngle * (index % 2 === 0 ? 1 : -1),
-                    scale: 1.25,
-                    filter: `blur(${blurAmount}px)`,
-                    color: hoverColor,
+                  animate={{
+                    x: isCharHovered ? driftX * (index % 2 === 0 ? 1 : -1) : 0,
+                    y: isCharHovered ? driftY : 0,
+                    rotate: isCharHovered ? rotateAngle * (index % 2 === 0 ? 1 : -1) : 0,
+                    scale: isCharHovered ? 1.25 : 1,
+                    filter: isCharHovered ? `blur(${blurAmount}px)` : "blur(0px)",
+                    color: isCharHovered ? hoverColor : "inherit",
                   }}
                   transition={{
                     default: springTransition,

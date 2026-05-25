@@ -18,7 +18,7 @@ export const GeometricReconstitution = ({
 
   // Split text into words, then characters
   const words = useMemo(() => {
-    return text.split(" ").map((word) => word.split(""));
+    return text.split(" ").filter(Boolean).map((word) => word.split(""));
   }, [text]);
 
   // Generate unique consistent scattered target offsets for each character on text change
@@ -48,17 +48,18 @@ export const GeometricReconstitution = ({
       <h1
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`${fontFamilyClass} ${fontSizeClass} ${textColorClass} font-bold tracking-tighter leading-none inline-flex flex-wrap justify-center gap-x-[0.3em] gap-y-[0.1em] cursor-default select-none pointer-events-auto overflow-visible m-0 p-0`}
+        className={`${fontFamilyClass} ${fontSizeClass} ${textColorClass} font-bold tracking-tighter leading-none inline-flex flex-wrap justify-center gap-x-[0.3em] gap-y-[0.1em] cursor-default select-none pointer-events-auto overflow-visible bg-transparent m-0 p-0`}
       >
         {words.map((word, wIdx) => (
           <span
             key={wIdx}
-            className="inline-block overflow-visible"
+            className="inline-block overflow-visible pointer-events-none"
             style={{ display: "inline-block" }}
           >
             {/* Ambient liquid floating motion using motion keyframes */}
             <motion.span
-              className="inline-block overflow-visible"
+              className="inline-block overflow-visible pointer-events-none"
+              style={{ display: "inline-block" }}
               animate={{
                 y: [0, -4, 4, 0],
                 x: [0, 2, -2, 0],
@@ -81,7 +82,8 @@ export const GeometricReconstitution = ({
                 return (
                   <motion.span
                     key={cIdx}
-                    className="inline-block origin-center"
+                    className="inline-block origin-center pointer-events-none"
+                    style={{ display: "inline-block" }}
                     animate={{
                       x: isHovered ? offset.x : 0,
                       y: isHovered ? offset.y : 0,
