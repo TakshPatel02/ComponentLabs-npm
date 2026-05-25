@@ -49,11 +49,14 @@ export const KineticSplitReveal = ({
         </div>
 
         {/* Splitting Layers & Tight Hover Target */}
-        <div
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="relative inline-block overflow-visible cursor-crosshair pointer-events-auto select-none bg-transparent"
-        >
+        <div className="relative inline-block overflow-visible select-none bg-transparent">
+          {/* Invisible, stable hover overlay */}
+          <div
+            className="absolute inset-0 z-20 cursor-crosshair bg-transparent"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          />
+
           {/* Top Half */}
           <div
             className="pointer-events-none"

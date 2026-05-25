@@ -46,10 +46,15 @@ export const GeometricReconstitution = ({
       className={`relative w-full flex flex-col justify-center items-center py-12 select-none ${className}`}
     >
       <h1
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className={`${fontFamilyClass} ${fontSizeClass} ${textColorClass} font-bold tracking-tighter leading-none inline-flex flex-wrap justify-center gap-x-[0.3em] gap-y-[0.1em] cursor-default select-none pointer-events-auto overflow-visible bg-transparent m-0 p-0`}
+        className={`${fontFamilyClass} ${fontSizeClass} ${textColorClass} font-bold tracking-tighter leading-none inline-flex flex-wrap justify-center gap-x-[0.3em] gap-y-[0.1em] cursor-default select-none overflow-visible relative bg-transparent m-0 p-0`}
       >
+        {/* Invisible, stable hover overlay */}
+        <span
+          className="absolute inset-0 z-20 cursor-pointer bg-transparent"
+          style={{ display: "block" }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        />
         {words.map((word, wIdx) => (
           <span
             key={wIdx}

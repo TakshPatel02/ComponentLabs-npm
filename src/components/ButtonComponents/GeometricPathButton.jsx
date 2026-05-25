@@ -53,8 +53,8 @@ export const GeometricPathButton = ({
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={`
-          relative z-10 bg-[#ebeae5] dark:bg-[#1e1e1e] font-['Space_Grotesk'] text-[14px] font-medium tracking-widest uppercase
-          py-4 px-12 rounded-lg text-primary hover:bg-[#f2f1ed] hover:dark:bg-[#1a1a1a] transition-colors duration-300
+          relative z-10 bg-[#ebeae5]  font-['Space_Grotesk'] text-[14px] font-medium tracking-widest uppercase
+          py-4 px-12 rounded-lg text-primary hover:bg-[#f2f1ed]  transition-colors duration-300
           border border-transparent cursor-pointer
           ${className}
         `}

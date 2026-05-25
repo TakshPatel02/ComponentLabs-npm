@@ -52,11 +52,17 @@ export const AtmosphericDistortion = ({
           return (
             <span
               key={index}
-              className="inline-block overflow-visible relative cursor-pointer"
+              className="inline-block overflow-visible relative"
               style={{ display: "inline-block" }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
+              {/* Invisible, stable hover overlay for this character */}
+              <span
+                className="absolute inset-0 z-20 cursor-pointer bg-transparent"
+                style={{ display: "block" }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              />
+
               {/* Layer 1: Ambient Float Motion (Living atmosphere) */}
               <motion.span
                 className="inline-block overflow-visible pointer-events-none"
