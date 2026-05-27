@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 export const AtmosphericDistortion = ({
   text = "ATMOSPHERIC",
   className = "",
-  textColorClass = "text-[#11100a] dark:text-[#f2f1ed]",
+  textColorClass = "text-primary",
   hoverColor = "#cf2d56",
   fontFamilyClass = "font-sans",
   fontSizeClass = "text-[60px] sm:text-[100px] md:text-[125px] lg:text-[150px]",

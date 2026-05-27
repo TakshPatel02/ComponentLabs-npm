@@ -17,3 +17,7 @@ export * from './components/Linkcomponent';
 export * from './components/OtherComponents';
 
 export * from './components/TextComponents';
+
+export * from './components/LogoCloudComponents';
+
+export * from './components/CreativeComponents';

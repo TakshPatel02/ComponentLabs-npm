@@ -14,7 +14,13 @@ export default defineConfig({
     "motion/react", 
     "tailwindcss", 
     "lucide-react", 
-    "framer-motion"
+    "framer-motion",
+    "react-icons",
+    "react-icons/si",
+    "react-icons/fa",
+    "react-icons/fi",
+    "react-icons/bs",
+    "react-router-dom"
   ],
   esbuildOptions(options) {
     options.jsx = 'automatic'

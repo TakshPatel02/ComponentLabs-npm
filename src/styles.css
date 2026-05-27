@@ -70,6 +70,7 @@
     --text-ui-body--font-weight: 400;
 
     --animate-marquee: marquee 30s linear infinite;
+    --animate-nfi-blink: nfi-blink 1s ease-in-out infinite;
 }
 
 :root {
@@ -118,7 +119,6 @@
         color: var(--on-surface);
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
-        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* Custom Scrollbar - Editorial Aesthetic */
@@ -149,7 +149,6 @@
     * {
         scrollbar-width: thin;
         scrollbar-color: var(--scrollbar-thumb) transparent;
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 }
 
@@ -187,7 +186,45 @@
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
+    }
+}
+
+@keyframes nfi-blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+}
+
+/* Theme Toggle View Transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 2;
+    animation: wipe-bottom-to-top 0.8s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+
+@keyframes wipe-bottom-to-top {
+    0% {
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+
+    100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
 }

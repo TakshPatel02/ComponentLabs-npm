@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 export const GeometricReconstitution = ({
   text = "ENGINEERED SOUL",
   className = "",
-  textColorClass = "text-[#11100a] dark:text-[#f2f1ed]",
+  textColorClass = "text-primary",
   fontFamilyClass = "font-sans",
   fontSizeClass = "text-4xl sm:text-6xl md:text-8xl lg:text-[110px]",
   stiffness = 200,
