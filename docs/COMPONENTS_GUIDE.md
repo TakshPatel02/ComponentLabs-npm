@@ -29,6 +29,10 @@ Notes:
 - VelocityText
 - TerminalTypingCard
 - VintageFader
+- FluidCursorTrail
+- MarqueeLogoCloud
+- AuroraHero
+- CinematicCards
 
 ---
 
@@ -626,6 +630,198 @@ Notes
 - Labels include "CH 1. Master" and "Gain Fader" styling; easily customizable via component props if needed.
 - Ideal for audio control interfaces, mixer simulations, or retro-themed dashboards.
 - Value is padded to 3 digits in the readout for authentic analog feel (e.g., 005, 050, 100).
+---
+
+## FluidCursorTrail
+
+- File: src/components/CreativeComponents/FluidCursorTrail.jsx
+
+Import
+
+```jsx
+import { FluidCursorTrail } from "../src/components/CreativeComponents/FluidCursorTrail";
+```
+
+Default usage (Global fullscreen mode)
+
+```jsx
+<FluidCursorTrail isGlobal={true} />
+```
+
+Local container mode usage
+
+```jsx
+<div className="relative w-full h-[500px]">
+  <FluidCursorTrail isGlobal={false} />
+</div>
+```
+
+Props
+
+- `isGlobal` (boolean) — If `true`, the canvas trail is fixed fullscreen (`fixed inset-0 pointer-events-none z-[9999]`), functioning as a global navigation backdrop. If `false`, it stays locally in its parent container as a card widget. Default: `true`.
+- `color` (string) — Trail color (hex, rgb, rgba). Default: `"rgba(232, 86, 122, 0.85)"`.
+- `pointsNumber` (number) — Quantity of points in the fluid physics chain (trail length). Default: `40`.
+- `widthFactor` (number) — Thickness multiplier for the trail. Default: `0.3`.
+- `spring` (number) — Spring stiffness of the trail (larger = faster trail reaction). Default: `0.4`.
+- `friction` (number) — Movement damping of the trail (larger = more friction / slower slide). Default: `0.5`.
+- `className` (string) — Custom classes for styling extensions.
+
+Notes
+
+- When `isGlobal={true}` is active, the overlay uses `pointer-events: none`, meaning visitors can click links, buttons, and fully interact with and navigate the page normally.
+- If the mouse is stationary or hasn't moved yet, the trail floats automatically in a elegant, looping sine/cosine path, keeping the page feeling alive.
+
+---
+
+## MarqueeLogoCloud
+
+- File: src/components/LogoCloudComponents/MarqueeLogoCloud.jsx
+
+Import
+
+```jsx
+import { MarqueeLogoCloud } from "../src/components/LogoCloudComponents/MarqueeLogoCloud";
+```
+
+Default usage
+
+```jsx
+<MarqueeLogoCloud />
+```
+
+Props
+
+- `headline` (string) — Optional heading text above the marquee. Set to `null` or `""` to hide it. Default: `"Your favorite companies are our partners."`
+- `companies` (Array) — List of company logo objects formatted as `{ name, icon }`. Default: built-in list of 9 popular platforms (Vercel, Supabase, Spotify, etc.).
+- `speed` (number) — Animation cycle duration in seconds (smaller = faster scroll speed). Default: `40`.
+- `className` (string) — Custom classes for styling extensions.
+
+Examples
+
+Custom companies list:
+
+```jsx
+import { SiGithub, SiGithubactions, SiSlack } from "react-icons/si";
+
+const myPartners = [
+  { name: "GitHub", icon: <SiGithub /> },
+  { name: "Actions", icon: <SiGithubactions /> },
+  { name: "Slack", icon: <SiSlack /> },
+];
+
+<MarqueeLogoCloud headline="Our Ecosystem" companies={myPartners} speed={25} />
+```
+
+Notes
+
+- Uses a dynamic `-50%` relative translation loop, ensuring perfect loop seamlessness on any screen size regardless of custom logo widths or names.
+- Includes a built-in `repeatCompaniesToFit` helper that replicates the company logos array until it has at least 15 items, ensuring a perfect full-bleed layout without gaps even on ultra-wide screens.
+
+---
+
+## AuroraHero
+
+- File: src/components/HeroComponents/AuroraHero.jsx
+
+Import
+
+```jsx
+import { AuroraHero } from "../src/components/HeroComponents/AuroraHero";
+```
+
+Default usage
+
+```jsx
+<AuroraHero />
+```
+
+Props
+
+- `badgeText` (string) — Supporting status tag above heading. Set to `null` or `""` to hide it. Default: `"Beta Now Live!"`.
+- `title` (string) — Main title text. Default: `"Decrease your SaaS churn by over 90%"`.
+- `description` (string) — Paragraph copy. Default: built-in retention description.
+- `ctaText` (string) — Call to action button label. Default: `"Start free trial"`.
+- `onCtaClick` (function) — Click event callback handler for CTA button.
+- `starCount` (number) — Density of canvas starfield. Default: `250`.
+- `colors` (Array) — Custom color strings for the animated aurora gradient background. Default: sequence of signature mint, blue, lavender, and pink gradient.
+- `className` (string) — Custom classes for styling extensions.
+
+Examples
+
+```jsx
+<AuroraHero
+  badgeText="New Update"
+  title="Create beautifully interactive React dashboards in seconds"
+  description="Bring your interfaces to life with fully customizable components built with Tailwind CSS and Framer Motion."
+  ctaText="Explore Docs"
+  starCount={150}
+  colors={["#FF0055", "#00FF55", "#0055FF"]}
+  onCtaClick={() => console.log("cta clicked!")}
+/>
+```
+
+Notes
+
+- Implements a canvas-based twinkling starfield background combined with an animated radial gradient using Framer Motion.
+- Sizing bounds-checks are built-in defensively to ensure canvas rendering is always clean.
+
+---
+
+## CinematicCards
+
+- File: src/components/CreativeComponents/CinematicCards.jsx
+
+Import
+
+```jsx
+import { CinematicCards } from "../src/components/CreativeComponents/CinematicCards";
+```
+
+Default usage
+
+```jsx
+<CinematicCards />
+```
+
+Props
+
+- `items` (Array) — Custom array of card items containing `{ id, title, subtitle, copy, button, image }`. Default: built-in Mountains, Beach, Desert, and Space cards.
+- `hoverToActivate` (boolean) — If `true`, hovering over collapsed cards expands them. If `false`, click interaction is required. Default: `true`.
+- `onCardChange` (function) — Callback triggered when active card changes: `(index, card) => void`.
+- `className` (string) — Custom classes for outer container.
+- `containerClassName` (string) — Custom classes for inner flex container.
+
+Examples
+
+Custom slides:
+
+```jsx
+const customSlides = [
+  {
+    id: 1,
+    title: "Cyber City",
+    subtitle: "NEON DREAMS",
+    copy: "Explore future streetscapes and high-tech corporate heights.",
+    button: "Enter City",
+    image: "https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?w=800"
+  },
+  {
+    id: 2,
+    title: "Deep Sea",
+    subtitle: "ABYSS VOYAGE",
+    copy: "Submerge into pitch-black waters and glowing marine biology.",
+    button: "Submerge",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"
+  }
+];
+
+<CinematicCards items={customSlides} hoverToActivate={false} onCardChange={(idx, item) => console.log(item)} />
+```
+
+Notes
+
+- Leverages Framer Motion's layout animations (`layout` and `layout="position"`) for smooth accordion-like slide expansions.
+- Incorporates selective grayscale and brightness transitions, custom number side accents, and consistent visual details using the signature accent color `#cf2d56`.
 
 ---
 
