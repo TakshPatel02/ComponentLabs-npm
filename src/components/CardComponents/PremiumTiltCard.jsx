@@ -4,17 +4,19 @@ import {
   useMotionTemplate,
   useMotionValue,
   useSpring,
-} from "framer-motion";
+} from "motion/react";
 import { FiArrowRight } from "react-icons/fi";
-import { Link } from "react-router-dom";
-
-const ROTATION_RANGE = 18; // Reduced for a more subtle, premium feel
-const HALF_ROTATION_RANGE = 18 / 2;
 
 export const PremiumTiltCard = ({ 
   title = "Premium Interface", 
   description = "A minimal, physics-driven interaction layer tailored for modern editorial design.",
-  href = "#" 
+  href = "#",
+  as: Component = "a",
+  icon = "⌘",
+  actionText = "Explore Component",
+  rotationRange = 18,
+  className = "",
+  ...props
 }) => {
   const ref = useRef(null);
 
@@ -37,6 +39,8 @@ export const PremiumTiltCard = ({
   // Subtle radial gradient for glare that adapts to theme
   const background = useMotionTemplate`radial-gradient(circle at ${glareX}% ${glareY}%, var(--on-surface-variant), transparent 45%)`;
 
+  const halfRotationRange = rotationRange / 2;
+
   const handleMouseMove = (e) => {
     if (!ref.current) return;
 
@@ -45,11 +49,11 @@ export const PremiumTiltCard = ({
     const height = rect.height;
 
     // Calculate rotation
-    const mouseXPos = (e.clientX - rect.left) * ROTATION_RANGE;
-    const mouseYPos = (e.clientY - rect.top) * ROTATION_RANGE;
+    const mouseXPos = (e.clientX - rect.left) * rotationRange;
+    const mouseYPos = (e.clientY - rect.top) * rotationRange;
 
-    const rX = (mouseYPos / height - HALF_ROTATION_RANGE) * -1;
-    const rY = mouseXPos / width - HALF_ROTATION_RANGE;
+    const rX = (mouseYPos / height - halfRotationRange) * -1;
+    const rY = mouseXPos / width - halfRotationRange;
 
     x.set(rX);
     y.set(rY);
@@ -76,7 +80,7 @@ export const PremiumTiltCard = ({
           transformStyle: "preserve-3d",
           transform,
         }}
-        className="relative h-100 w-75 rounded-2xl bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border cursor-pointer group transition-colors"
+        className={`relative h-100 w-75 rounded-2xl bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border cursor-pointer group transition-colors ${className}`}
       >
         {/* Subtle dynamic glare overlay */}
         <motion.div 
@@ -106,7 +110,11 @@ export const PremiumTiltCard = ({
           >
             {/* Minimal Logo / Icon placeholder */}
             <div className="w-10 h-10 rounded-full bg-on-surface/5 flex items-center justify-center border oklab-border group-hover:bg-on-surface/10 transition-colors duration-300">
-              <span className="font-['Space_Grotesk'] text-[18px] font-bold text-primary opacity-80">⌘</span>
+              {typeof icon === "string" ? (
+                <span className="font-['Space_Grotesk'] text-[18px] font-bold text-primary opacity-80">{icon}</span>
+              ) : (
+                icon
+              )}
             </div>
             
             {/* Text Content */}
@@ -125,16 +133,19 @@ export const PremiumTiltCard = ({
             style={{ transform: "translateZ(35px)" }} 
             className="relative z-10 mt-auto pt-5 border-t border-border-fallback-10 group-hover:border-on-surface/10 transition-colors"
           >
-            <Link 
-              to={href}
+            <Component 
+              {...(Component === "a" ? { href } : { to: href })}
               className="flex items-center gap-2 text-[14px] font-['Space_Grotesk'] font-semibold tracking-wide text-primary group-hover:text-[#E8567A] transition-colors duration-300 uppercase"
+              {...props}
             >
-              Explore Component
+              {actionText}
               <FiArrowRight className="text-[16px] group-hover:translate-x-1.5 transition-transform duration-300" />
-            </Link>
+            </Component>
           </div>
         </div>
       </motion.div>
     </div>
   );
 };
+
+export default PremiumTiltCard;

@@ -33,6 +33,8 @@ Notes:
 - MarqueeLogoCloud
 - AuroraHero
 - CinematicCards
+- TerminalContactForm
+- PremiumTiltCard
 
 ---
 
@@ -821,7 +823,112 @@ const customSlides = [
 Notes
 
 - Leverages Framer Motion's layout animations (`layout` and `layout="position"`) for smooth accordion-like slide expansions.
-- Incorporates selective grayscale and brightness transitions, custom number side accents, and consistent visual details using the signature accent color `#cf2d56`.
+- Incorporates selective grayscale and brightness transitions, custom number side accents, and consistent visual details using the signature accent color `#cf2d56`
+---
+
+## TerminalContactForm
+
+- File: src/components/FormComponents/TerminalContactForm.jsx
+
+Import
+
+```jsx
+import { TerminalContactForm } from "../src/components/FormComponents/TerminalContactForm";
+```
+
+Default usage
+
+```jsx
+<TerminalContactForm />
+```
+
+Props
+
+- `fields` (Array) — Custom list of input step objects, shaped like `{ key, prompt, hl, type, ph }`. Default: original Name, Email, and Description fields.
+- `greetingText` (string) — The typewriter greeting shown when the component mounts. Default: `"Hey there! We're excited to link 🔗"`.
+- `terminalTitle` (string) — The label in the center of the terminal title bar. Default: `"contact@componentlabs.in"`.
+- `onSubmit` (function) — Callback callback function triggered on successful form submission: `(data) => void`, where `data` is an object of all field keys and their entered answers.
+- `successMessage` (string) — Custom message shown after the form has been successfully sent. Default: `"Sent! We'll get back to you ASAP 😎"`.
+- `typerSpeed` (number) — Typing animation speed in milliseconds per character. Default: `30`.
+- `className` (string) — Custom classes for outer container overrides.
+
+Examples
+
+Collecting feedback/custom steps:
+
+```jsx
+const customSteps = [
+  { key: "username", prompt: "Hello! What's your ", hl: "GitHub username?", type: "text", ph: "octocat" },
+  { key: "rating", prompt: "Awesome! How would you rate ", hl: "our library (1-10)?", type: "number", ph: "10" },
+  { key: "notes", prompt: "Perfect, any ", hl: "final thoughts?", type: "text", ph: "It's awesome!" }
+];
+
+<TerminalContactForm
+  fields={customSteps}
+  greetingText="Welcome to the feedback terminal!"
+  terminalTitle="feedback@componentlabs.in"
+  successMessage="Thanks for the feedback! 🚀"
+  onSubmit={(data) => console.log("Received data:", data)}
+/>
+```
+
+Notes
+
+- Styled as a dark macOS-style terminal window with traffic light headers, prompt lines (`❯`), and an inline blinking cursor block.
+- Implements smooth auto-scroll to the bottom of the log container and auto-focuses the input at each step to keep the experience friction-free.
+
+---
+
+## PremiumTiltCard
+
+- File: src/components/CardComponents/PremiumTiltCard.jsx
+
+Import
+
+```jsx
+import { PremiumTiltCard } from "../src/components/CardComponents/PremiumTiltCard";
+```
+
+Default usage
+
+```jsx
+<PremiumTiltCard />
+```
+
+Props
+
+- `title` (string) — Primary heading text on the card. Default: `"Premium Interface"`.
+- `description` (string) — Supporting copy description below the title. Default: original physics interaction description.
+- `href` (string) — Destination path/URL. Default: `"#"`
+- `as` (Component / string) — Polymorphic wrapper for the action link. Defaults to standard HTML anchor `"a"` to avoid router failures in universal React/SSR frameworks. Easily takes custom components like `Link` from `react-router-dom` or `next/link`. Default: `"a"`.
+- `icon` (Component / string) — Minimal circular header badge content. Can be a text string character or full custom SVG element. Default: `"⌘"`.
+- `actionText` (string) — Label for the bottom action link. Default: `"Explore Component"`.
+- `rotationRange` (number) — Rotation threshold sensitivity on hover mouse movements. Default: `18`.
+- `className` (string) — Custom classes for outer card overrides.
+
+Examples
+
+Using React Router `Link`:
+
+```jsx
+import { Link } from "react-router-dom";
+import { Folder } from "lucide-react";
+
+<PremiumTiltCard
+  title="Project Folder"
+  description="Manage all your visual and asset files cleanly in a premium physics-driven card layout."
+  href="/projects"
+  as={Link}
+  icon={<Folder className="w-5 h-5 text-neutral-400" />}
+  actionText="Open Projects"
+/>
+```
+
+Notes
+
+- Styled as an elegant, physics-driven tilt card with a dynamic radial glare effect overlay that tracks the user's cursor position.
+- Offers a premium 3D transform effect utilizing Framer Motion's `preserve-3d` standard styles.
+- Strictly preserves all original styles, custom dimensions (`h-100`, `w-75`), borders, glare calculations, and colors (like `text-primary` and `#E8567A`).
 
 ---
 
