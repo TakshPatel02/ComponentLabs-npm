@@ -35,6 +35,9 @@ Notes:
 - CinematicCards
 - TerminalContactForm
 - PremiumTiltCard
+- CreativeIntelligenceCTA
+- ProTierPricingCTA
+- SmartInterfaceCTA
 
 ---
 
@@ -929,6 +932,176 @@ Notes
 - Styled as an elegant, physics-driven tilt card with a dynamic radial glare effect overlay that tracks the user's cursor position.
 - Offers a premium 3D transform effect utilizing Framer Motion's `preserve-3d` standard styles.
 - Strictly preserves all original styles, custom dimensions (`h-100`, `w-75`), borders, glare calculations, and colors (like `text-primary` and `#E8567A`).
+
+---
+
+## CreativeIntelligenceCTA
+
+- File: src/components/CTAComponents/CreativeIntelligenceCTA.jsx
+
+Import
+
+```jsx
+import { CreativeIntelligenceCTA } from "../src/components/CTAComponents/CreativeIntelligenceCTA";
+```
+
+Default usage
+
+```jsx
+<CreativeIntelligenceCTA />
+```
+
+Props
+
+- `headline` (string) — Main title text of the section. Default: `"Create with Intelligence"`.
+- `subtitle` (string) — Supporting serif paragraph text below the headline. Default: `"Scale your digital footprint through an automated mind that learns your tone, logic, and creative rhythm."`.
+- `ctaText` (string) — The label of the pill-shaped action button. Default: `"Begin Creation"`.
+- `onCtaClick` (function) — Callback function triggered when the CTA button is clicked.
+- `imageUrl` (string) — Fallback high-quality abstract image or customizable image URL. Default: Unsplash bronze abstract waves graphic.
+- `imageAlt` (string) — Alt description for the wave visual card. Default: `"Flowing bronze waves representing automated creativity"`.
+- `icon` (ReactNode) — SVG element or component rendering in the metallic copper accent color above the headline. Default: Lucide `<Network />`.
+- `className` (string) — Additional classes appended to the outer container.
+
+Examples
+
+Customizing background imagery & actions:
+
+```jsx
+import { Sparkles } from "lucide-react";
+
+<CreativeIntelligenceCTA
+  headline="Design the Future"
+  subtitle="Unleash an infinitely scalable UI playground powered by component intelligence."
+  ctaText="Launch Console"
+  imageUrl="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200"
+  icon={<Sparkles className="w-8 h-8 text-amber-500" />}
+  onCtaClick={() => console.log("Console launched")}
+/>
+```
+
+Notes
+
+- Provides beautiful staggered entry micro-animations powered by `"motion/react"`.
+- Highlights the main title text in a premium metallic copper accent color (`#c58c67`).
+- Image element comes with smooth hover scaling animations.
+
+---
+
+## ProTierPricingCTA
+
+- File: src/components/CTAComponents/ProTierPricingCTA.jsx
+
+Import
+
+```jsx
+import { ProTierPricingCTA } from "../src/components/CTAComponents/ProTierPricingCTA";
+```
+
+Default usage
+
+```jsx
+<ProTierPricingCTA />
+```
+
+Props
+
+- `badgeText` (string) — Flashing Pro features notification badge label. Default: `"New Pro Features Available"`.
+- `headline` (ReactNode / string) — Headline text on the left column. Default: `"Unlock the Pro Tier"` with highlighted Warm-Error span.
+- `subtitle` (string) — Paragraph description text beneath the headline. Default: `"Experience the power of seamless integrations and watch your productivity soar with our engineering-grade components."`.
+- `features` (string[]) — Array of checklist text strings. Default: Three premium component features.
+- `cardBadgeText` (string) — Highlighted uppercase badge on the pricing card. Default: `"Most Popular"`.
+- `cardTitle` (string) — Small upper-case monospace title of the tier. Default: `"Professional"`.
+- `cardPrice` (string) — The tier's large price tag. Default: `"$10"`.
+- `cardPeriod` (string) — Period label. Default: `"/mo"`.
+- `cardDescription` (string) — Support copy explaining the tier. Default: `"Full access for individuals and small teams focused on craft."`.
+- `ctaText` (string) — Action button label inside the card. Default: `"Upgrade Now"`.
+- `onCtaClick` (function) — Click event handler for the card upgrade button.
+- `guaranteeText` (string) — Monospace trial support disclaimer text. Default: `"14-day free trial • No credit card required"`.
+- `className` (string) — Outer wrapper style classes.
+
+Examples
+
+Creating a Free Trial / Starter package layout:
+
+```jsx
+<ProTierPricingCTA
+  badgeText="Developer License"
+  headline="Build with ComponentLabs"
+  features={[
+    "Access to 50+ beautiful blocks",
+    "Tailwind v4 fully optimized",
+    "Community discord channel access"
+  ]}
+  cardBadgeText="Free Forever"
+  cardTitle="Hobby Tier"
+  cardPrice="$0"
+  cardPeriod=""
+  cardDescription="Perfect for hobbyists and developers experimenting on side-projects."
+  ctaText="Get Started"
+  onCtaClick={() => alert("Starter registered!")}
+/>
+```
+
+Notes
+
+- Combines a split grid layout structure (headline checklist on left, pricing card on right).
+- Features dynamic card lift animations on mouse hover.
+- Preserves all layout tokens, color tags (`bg-surface-container`, `text-amber-600`), and spacing offsets.
+
+---
+
+## SmartInterfaceCTA
+
+- File: src/components/CTAComponents/SmartInterfaceCTA.jsx
+
+Import
+
+```jsx
+import { SmartInterfaceCTA } from "../src/components/CTAComponents/SmartInterfaceCTA";
+```
+
+Default usage
+
+```jsx
+<SmartInterfaceCTA />
+```
+
+Props
+
+- `badgeText` (string) — Centered floating trust/social badge text. Default: `"Trusted by 2,000+ Engineers"`.
+- `headline` (ReactNode / string) — Core bold headline text. Default: `"The smartest interface decision you’ve ever made."`.
+- `subtitle` (ReactNode / string) — Serif subtitle with responsive breakpoints. Default: original engineered design system copy.
+- `primaryCtaText` (string) — Label for the prominent primary solid button. Default: `"Start Building"`.
+- `onPrimaryCtaClick` (function) — Callback function triggered when primary CTA is clicked.
+- `secondaryCtaText` (string) — Label for the inline link action. Default: `"Book a Demo"`.
+- `secondaryCtaHref` (string) — Anchor destination for the secondary link. Default: `"#"`
+- `onSecondaryCtaClick` (function) — Click event handler for the secondary link action.
+- `icon` (ReactNode) — Centered rounded badge icon. Default: Lucide `<DraftingCompass />` in solid primary color background.
+- `className` (string) — Container wrapper style overrides.
+
+Examples
+
+Promoting a premium design consultation:
+
+```jsx
+import { MessageSquare } from "lucide-react";
+
+<SmartInterfaceCTA
+  badgeText="100% Client Satisfaction"
+  headline="Ready to scale your product design?"
+  subtitle="Schedule an elite 1-on-1 strategy call with our core design engineering team."
+  primaryCtaText="Schedule Call"
+  secondaryCtaText="View Portfolio"
+  secondaryCtaHref="https://componentlabs.in/portfolio"
+  icon={<MessageSquare className="w-7 h-7" />}
+  onPrimaryCtaClick={() => window.open("https://calendly.com", "_blank")}
+/>
+```
+
+Notes
+
+- Floating trust badge aligns dynamically across mobile and desktop viewpoints.
+- Arrow indicator in the secondary link triggers a smooth horizontal slide animation on hover.
 
 ---
 

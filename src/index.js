@@ -21,3 +21,5 @@ export * from './components/TextComponents';
 export * from './components/LogoCloudComponents';
 
 export * from './components/CreativeComponents';
+
+export * from './components/CTAComponents';
