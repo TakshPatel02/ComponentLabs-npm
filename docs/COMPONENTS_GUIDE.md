@@ -18,6 +18,7 @@ Notes:
 - AnimatedFAQ
 - CreativeHighlightText
 - EncryptedText
+- IdentityDecoder
 - EncryptButton
 - MagnetButton
 - NeumorphismButton
@@ -161,6 +162,69 @@ Notes
 - Uses randomized glyphs from an internal character set and progressively reveals the original text.
 - Spaces in the source text are preserved during animation.
 - Very long strings with very small `interval` values may increase render updates.
+
+---
+
+## IdentityDecoder
+
+- File: src/components/TextComponents/IdentityDecoder.jsx
+
+Import
+
+```jsx
+import { IdentityDecoder } from "../src/components/TextComponents/IdentityDecoder";
+```
+
+Default usage
+
+```jsx
+<IdentityDecoder />
+```
+
+Props
+
+- `identity` (string) — The main target string to be decoded/split. Default: `"takshpatel02@component-labs.com"`.
+- `segments` (Array) — Array of segment objects mapping specific interactive items to indices in the main identity string. Each segment has the structure: `{ key: string, label: string, icon: ReactNode, range: [number, number] }`. Default: built-in list of four items (Name, GitHub, Email, Website) matching your profile.
+- `accentColor` (string) — Hover highlight and connector line hex/color value. Default: `"#d24200"` (premium warm orange/red).
+- `springConfig` (object) — Custom spring configuration object for the bracket and connector lines' motion. Default: `{ type: "spring", stiffness: 200, damping: 24 }`.
+- `onSegmentChange` (function) — Callback event handler triggered when active segment changes on hover or touch, passing the active `key` or `null`.
+- `className` (string) — CSS wrapper class overrides.
+
+Examples
+
+Customizing segments and ranges:
+
+```jsx
+import { User, Shield, Terminal } from "lucide-react";
+
+const customSegments = [
+  {
+    key: "user",
+    label: "User",
+    icon: <User className="w-[18px] h-[18px]" />,
+    range: [0, 4] // "root"
+  },
+  {
+    key: "host",
+    label: "Host",
+    icon: <Shield className="w-[18px] h-[18px]" />,
+    range: [5, 14] // "localhost"
+  }
+];
+
+<IdentityDecoder
+  identity="root@localhost"
+  segments={customSegments}
+  accentColor="#10B981"
+  onSegmentChange={(key) => console.log("Active segment:", key)}
+/>
+```
+
+Notes
+
+- Combines modern typography with dynamic mathematical SVGs that draw smooth path alignments between cursor states and raw characters.
+- Uses responsive client rect measurements defensively clamped to avoid character indexing overflows during hot resizing.
+- Built-in automatic resizing and font-load observers to ensure absolute pixel-perfect alignment.
 
 ---
 
