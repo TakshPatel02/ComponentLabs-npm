@@ -1,6 +1,6 @@
 {
   "name": "component-labs",
-  "version": "2.10.0",
+  "version": "2.10.1",
   "description": "Premium AI-native UI primitives",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
