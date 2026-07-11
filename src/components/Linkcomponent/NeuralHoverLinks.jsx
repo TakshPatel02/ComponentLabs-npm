@@ -319,9 +319,9 @@ const LINKS_DATA = [
   },
 ];
 
-export const NeuralHoverLinks = () => {
+export const NeuralHoverLinks = ({ links = LINKS_DATA, className = "" }) => {
   return (
-    <section className="relative overflow-hidden rounded-xl border border-[#11100a]/15 bg-[#f2f1ed] p-6 md:p-10">
+    <section className={`relative overflow-hidden rounded-xl border border-[#11100a]/15 bg-[#f2f1ed] p-6 md:p-10 ${className}`}>
       {/* Subtle grid background pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
@@ -345,7 +345,7 @@ export const NeuralHoverLinks = () => {
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl">
-        {LINKS_DATA.map((link, i) => (
+        {links.map((link, i) => (
           <NeuralLink
             key={link.heading}
             heading={link.heading}
@@ -368,5 +368,3 @@ export const NeuralHoverLinks = () => {
     </section>
   );
 };
-
-export default NeuralHoverLinks;

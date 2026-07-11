@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Upload, Loader2, CheckCircle2 } from "lucide-react";
 
 /**
  * UploadButton - A ready-to-use upload button for file uploads.
@@ -76,9 +77,6 @@ export const UploadButton = ({
         disabled={status === "uploading"}
         animate={{
           scale: status === "uploading" ? 0.97 : 1,
-          borderColor: status === "success" ? "#11100a" : "#11100a",
-          backgroundColor: status === "success" ? "#11100a" : "transparent",
-          color: status === "success" ? "#fdf8f7" : "#11100a",
         }}
         transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
         whileHover={
@@ -87,8 +85,12 @@ export const UploadButton = ({
             : {}
         }
         whileTap={status === "idle" ? { scale: 0.95 } : {}}
-        className={`relative px-6 py-3.5 min-w-50 flex items-center justify-center font-['Space_Grotesk',sans-serif] text-[13px] font-medium tracking-widest uppercase border overflow-hidden ${
+        className={`relative px-6 py-3.5 min-w-50 flex items-center justify-center font-['Space_Grotesk',sans-serif] text-[13px] font-medium tracking-widest uppercase border overflow-hidden transition-colors duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           status === "uploading" ? "cursor-not-allowed" : "cursor-pointer"
+        } ${
+          status === "success"
+            ? "bg-[#11100a] text-[#fdf8f7] border-[#11100a] dark:bg-[#fdf8f7] dark:text-[#11100a] dark:border-[#fdf8f7]"
+            : "bg-transparent text-[#11100a] border-[#11100a] dark:text-[#fdf8f7] dark:border-[#fdf8f7]"
         } ${className}`}
       >
         {/* Progress Bar Background */}
@@ -106,7 +108,7 @@ export const UploadButton = ({
             duration: status === "uploading" ? 2.5 : 0.3,
             ease: status === "uploading" ? "linear" : "easeOut",
           }}
-          className="absolute left-0 top-0 h-full bg-[#11100a]/10 z-0"
+          className="absolute left-0 top-0 h-full bg-[#11100a]/10 dark:bg-[#fdf8f7]/10 z-0"
         />
         <div className="relative z-10 flex items-center justify-center w-full h-full overflow-hidden">
           <AnimatePresence mode="wait">
@@ -119,9 +121,7 @@ export const UploadButton = ({
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="flex items-center gap-2"
               >
-                <span className="material-symbols-outlined text-[18px]">
-                  upload
-                </span>
+                  <Upload size={18} />
                 {idleText}
               </motion.div>
             )}
@@ -134,13 +134,7 @@ export const UploadButton = ({
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="flex items-center gap-2"
               >
-                <motion.span
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                  className="material-symbols-outlined text-[18px]"
-                >
-                  sync
-                </motion.span>
+                  <Loader2 size={18} />
                 {uploadingText}
               </motion.div>
             )}
@@ -153,9 +147,7 @@ export const UploadButton = ({
                 transition={{ duration: 0.4, type: "spring", bounce: 0.5 }}
                 className="flex items-center gap-2"
               >
-                <span className="material-symbols-outlined text-[18px]">
-                  check_circle
-                </span>
+                  <CheckCircle2 size={18} />
                 {successText}
               </motion.div>
             )}

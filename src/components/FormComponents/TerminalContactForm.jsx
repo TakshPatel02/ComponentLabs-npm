@@ -16,8 +16,7 @@ function Typer({ text, onDone, speed = 30 }) {
       {i < text.length && (
         <motion.span
           animate={{ opacity: [1, 0] }}
-          transition={{ repeat: Infinity, duration: 0.8, ease: 'linear' }}
-          className="inline-block w-base h-4.5 bg-neutral-400 ml-1 align-text-bottom"
+          className="inline-block w-2.5 h-[18px] bg-neutral-400 ml-1 align-text-bottom"
         />
       )}
     </>
@@ -86,7 +85,7 @@ export function TerminalContactForm({
   return (
     <div className={`flex w-full items-center justify-center p-4 ${className}`}>
       {/* Outer shell — matches TerminalTypingCard exactly */}
-      <div className="w-full max-w-2xl rounded-xl bg-[#0d0d0d] border oklab-border shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] overflow-hidden font-mono text-sm md:text-base">
+      <div className="w-full max-w-2xl rounded-xl bg-[#0d0d0d] border border-neutral-800 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] overflow-hidden font-mono text-sm md:text-base">
 
         {/* Terminal Header — identical to TerminalTypingCard */}
         <div className="flex items-center px-4 py-3 bg-[#161616] border-b border-neutral-800/80">
@@ -135,7 +134,7 @@ export function TerminalContactForm({
                     </motion.div>
                   ) : typed && (
                     <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="mt-3 ml-1 flex items-center gap-2">
-                      <span className="text-secondary mr-1 select-none">❯</span>
+                      <span className="text-blue-500 mr-1 select-none">❯</span>
                       <input ref={ref} type={f.type} value={input} onChange={e => setInput(e.target.value)}
                         onKeyDown={e => e.key === 'Enter' && submit()} placeholder={f.ph} autoFocus
                         className="flex-1 bg-transparent text-neutral-200 placeholder:text-neutral-700 outline-none caret-blue-400 py-1 tracking-tight"
@@ -187,7 +186,7 @@ export function TerminalContactForm({
           {/* Blinking cursor at the end when idle */}
           {step === -1 && (
             <div className="text-neutral-200 mt-2 tracking-tight">
-              <span className="text-secondary mr-3">❯</span>
+              <span className="text-blue-500 mr-3">❯</span>
             </div>
           )}
         </div>
@@ -195,5 +194,3 @@ export function TerminalContactForm({
     </div>
   );
 }
-
-export default TerminalContactForm;

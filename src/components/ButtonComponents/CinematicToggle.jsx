@@ -38,9 +38,9 @@ export const CinematicToggle = ({
           <motion.span
             animate={{ rotate: isActive ? 180 : 0 }}
             transition={SPRING}
-            className="material-symbols-outlined text-primary text-lg select-none"
+            className="text-[#11100a] dark:text-[#f2f1ed] text-lg select-none flex items-center justify-center"
           >
-            {isActive ? <MoonIcon /> : <SunIcon />}
+            {isActive ? <MoonIcon size={18} /> : <SunIcon size={18} />}
           </motion.span>
         </motion.div>
       </motion.button>

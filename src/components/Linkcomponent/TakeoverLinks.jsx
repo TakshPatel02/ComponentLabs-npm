@@ -132,5 +132,3 @@ export const TakeoverLinks = ({ links = DEFAULT_LINKS, className = "" }) => {
     </section>
   );
 };
-
-export default TakeoverLinks;

@@ -1,17 +1,17 @@
 import React from "react";
 
-const FillButton = ({
+export const FillButton = ({
   children,
   onClick,
   className = "",
-  fillColorClass = "bg-[#11100a]",
+  fillColorClass = "bg-[#11100a] dark:bg-[#fdf8f7]",
 }) => {
   return (
     <button
       onClick={onClick}
-      className={`relative px-8 py-3.5 font-['Space_Grotesk',sans-serif] text-[13px] font-medium tracking-widest uppercase border border-[#11100a] text-[#11100a] overflow-hidden group/btn active:scale-[0.98] transition-transform ${className}`}
+      className={`relative px-8 py-3.5 font-['Space_Grotesk',sans-serif] text-[13px] font-medium tracking-widest uppercase border border-[#11100a] dark:border-[#fdf8f7] text-[#11100a] dark:text-[#fdf8f7] overflow-hidden group/btn active:scale-[0.98] transition-transform ${className}`}
     >
-      <span className="relative z-10 group-hover/btn:text-[#fdf8f7] transition-colors duration-300 delay-200 ease-in-out">
+      <span className="relative z-10 group-hover/btn:text-[#fdf8f7] dark:group-hover/btn:text-[#11100a] transition-colors duration-300 delay-200 ease-in-out">
         {children}
       </span>
       <span
@@ -32,5 +32,3 @@ const FillButton = ({
     </button>
   );
 };
-
-export default FillButton;

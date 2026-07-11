@@ -1,7 +1,12 @@
 import React from "react";
 import { motion } from "motion/react";
 
-export const CreativeHighlightText = ({ text, decorText, para }) => {
+export const CreativeHighlightText = ({ 
+  text = "Design is meant to", 
+  decorText = "communicate", 
+  subText = "not just to decorate.",
+  para = "A thoughtful design system ensures that everything has a purpose and a place, communicating clearly to the end user." 
+}) => {
   return (
     <div className="flex flex-col items-center justify-center bg-transparent w-full h-full p-4 md:p-8">
       <motion.h1
@@ -86,7 +91,7 @@ export const CreativeHighlightText = ({ text, decorText, para }) => {
         transition={{ duration: 1, delay: 0.4 }}
         className="font-['Inter',sans-serif] text-[13px] md:text-xl font-medium text-[#cf2d56] tracking-[0.2em] uppercase mt-12 mb-4 text-center"
       >
-        not just to decorate.
+        {subText}
       </motion.p>
 
       <motion.p

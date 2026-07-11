@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Bell } from "lucide-react";
 
 /**
  * KanbanBoard - A customizable Kanban board React component.
@@ -200,9 +201,7 @@ export const KanbanBoard = ({
         </div>
         <div className="hidden md:flex items-center gap-4">
           <div className="w-8 h-8 rounded-full bg-[#11100a] flex items-center justify-center text-[#ffffff]">
-            <span className="material-symbols-outlined text-[16px]">
-              notifications
-            </span>
+              <Bell size={18} />
           </div>
         </div>
       </div>

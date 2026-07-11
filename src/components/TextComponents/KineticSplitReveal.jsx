@@ -29,7 +29,7 @@ export const KineticSplitReveal = ({
 
   return (
     <div
-      className={`relative w-full min-h-[300px] flex flex-col justify-center items-center py-12 select-none ${className}`}
+      className={`relative w-full min-h-[300px] flex flex-col justify-center items-center py-12 select-none overflow-hidden ${className}`}
     >
       <div className="relative w-full flex justify-center py-12 overflow-visible">
         {/* Inner Reveal Layer (Quote) */}
@@ -69,7 +69,7 @@ export const KineticSplitReveal = ({
             }}
           >
             <h1
-              className={`${fontFamilyClass} ${fontSizeClass} font-black tracking-tighter leading-none ${textColorClass} text-center uppercase m-0 p-0`}
+              className={`${fontFamilyClass} ${fontSizeClass} font-black tracking-tighter leading-none ${textColorClass} text-center uppercase whitespace-nowrap m-0 p-0`}
             >
               {text}
             </h1>
@@ -87,7 +87,7 @@ export const KineticSplitReveal = ({
             }}
           >
             <h1
-              className={`${fontFamilyClass} ${fontSizeClass} font-black tracking-tighter leading-none ${textColorClass} text-center uppercase m-0 p-0`}
+              className={`${fontFamilyClass} ${fontSizeClass} font-black tracking-tighter leading-none ${textColorClass} text-center uppercase whitespace-nowrap m-0 p-0`}
             >
               {text}
             </h1>
