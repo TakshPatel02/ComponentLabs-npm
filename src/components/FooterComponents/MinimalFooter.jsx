@@ -1,7 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const MinimalFooter = () => {
+export const MinimalFooter = ({
+  brandName = "ComponentLabs",
+  description = "The modern integration platform for teams who ship fast and build beautiful interfaces.",
+  footerLinks = ["Home", "Features", "Pricing", "About", "Blog", "Contact"],
+  copyright = "© 2026 ComponentLabs, Inc. All rights reserved.",
+  className = ""
+}) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -23,7 +29,7 @@ const MinimalFooter = () => {
   };
 
   return (
-    <footer className="w-full bg-surface-container border-t oklab-border py-16 px-4 md:px-8 font-ui-body">
+    <footer className={`w-full bg-[#f1edeb] dark:bg-[#1a1a1a] border-t border-[#11100a]/10 dark:border-[#fdf8f7]/10 py-16 px-4 md:px-8 font-ui-body ${className}`}>
       <motion.div
         className="max-w-6xl mx-auto"
         variants={containerVariants}
@@ -43,7 +49,7 @@ const MinimalFooter = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-primary"
+              className="text-[#11100a] dark:text-[#fdf8f7]"
             >
               <rect x="3" y="3" width="7" height="7" />
               <rect x="14" y="3" width="7" height="7" />
@@ -52,21 +58,20 @@ const MinimalFooter = () => {
               <path d="M10 10l4 4" />
               <path d="M14 10l-4 4" />
             </svg>
-            <span className="font-bold text-xl tracking-tight text-primary">
-              ComponentLabs
+            <span className="font-bold text-xl tracking-tight text-[#11100a] dark:text-[#fdf8f7]">
+              {brandName}
             </span>
           </motion.div>
           <motion.p
             variants={itemVariants}
-            className="text-on-surface-variant max-w-2xl text-sm md:text-base leading-relaxed"
+            className="text-[#48473f] dark:text-[#fdf8f7]/80 max-w-2xl text-sm md:text-base leading-relaxed"
           >
-            The modern integration platform for teams who ship fast and build
-            beautiful interfaces.
+            {description}
           </motion.p>
           <motion.div variants={itemVariants} className="flex items-center gap-5 mt-2">
             <a
               href="#"
-              className="text-on-surface-variant hover:text-primary transition-all hover:scale-110 active:scale-95"
+              className="text-[#48473f] dark:text-[#fdf8f7]/80 hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-all hover:scale-110 active:scale-95"
             >
               {/* Twitter/X icon */}
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -75,7 +80,7 @@ const MinimalFooter = () => {
             </a>
             <a
               href="#"
-              className="text-on-surface-variant hover:text-primary transition-all hover:scale-110 active:scale-95"
+              className="text-[#48473f] dark:text-[#fdf8f7]/80 hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-all hover:scale-110 active:scale-95"
             >
               {/* GitHub icon */}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -85,7 +90,7 @@ const MinimalFooter = () => {
             </a>
             <a
               href="#"
-              className="text-on-surface-variant hover:text-primary transition-all hover:scale-110 active:scale-95"
+              className="text-[#48473f] dark:text-[#fdf8f7]/80 hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-all hover:scale-110 active:scale-95"
             >
               {/* LinkedIn icon */}
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -98,31 +103,29 @@ const MinimalFooter = () => {
         {/* Links Section */}
         <motion.div
           variants={itemVariants}
-          className="border-t border-black/10 dark:border-white/10 py-8 flex flex-wrap gap-x-8 gap-y-4"
+          className="border-t border-[#11100a]/10 dark:border-[#fdf8f7]/10 py-8 flex flex-wrap gap-x-8 gap-y-4"
         >
-          {["Home", "Features", "Pricing", "About", "Blog", "Contact"].map(
+          {footerLinks.map(
             (item, index) => (
               <a
                 key={index}
                 href="#"
-                className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors relative group"
+                className="text-sm font-medium text-[#48473f] dark:text-[#fdf8f7]/80 hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-colors relative group"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#11100a] dark:bg-[#fdf8f7] transition-all duration-300 group-hover:w-full"></span>
               </a>
             )
           )}
         </motion.div>
 
         {/* Bottom Section */}
-        <motion.div variants={itemVariants} className="pt-8 border-t border-black/10 dark:border-white/10">
-          <p className="text-sm text-on-surface-variant/70">
-            © 2026 ComponentLabs, Inc. All rights reserved.
+        <motion.div variants={itemVariants} className="pt-8 border-t border-[#11100a]/10 dark:border-[#fdf8f7]/10">
+          <p className="text-sm text-[#48473f]/70 dark:text-[#fdf8f7]/70">
+            {copyright}
           </p>
         </motion.div>
       </motion.div>
     </footer>
   );
 };
-
-export default MinimalFooter;

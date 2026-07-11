@@ -10,7 +10,7 @@ const defaultFeatures = [
 
 export const ProTierPricingCTA = ({
   badgeText = "New Pro Features Available",
-  headline = <>Unlock the <br /> <span className="text-error-warm">Pro Tier</span></>,
+  headline = <>Unlock the <br /> <span className="text-[#ff5a36] dark:text-[#ff7a59]">Pro Tier</span></>,
   subtitle = "Experience the power of seamless integrations and watch your productivity soar with our engineering-grade components.",
   features = defaultFeatures,
   cardBadgeText = "Most Popular",
@@ -47,7 +47,7 @@ export const ProTierPricingCTA = ({
   };
 
   return (
-    <div className={`w-full relative overflow-hidden bg-surface-container text-on-surface py-20 sm:py-28 flex justify-center items-center transition-colors duration-300 ${className}`}>
+    <div className={`w-full relative overflow-hidden bg-[#f1edeb] dark:bg-[#1a1a1a] text-[#11100a] dark:text-[#fdf8f7] py-20 sm:py-28 flex justify-center items-center transition-colors duration-300 ${className}`}>
       
       {/* ── Main Content Container ── */}
       <motion.div
@@ -74,7 +74,7 @@ export const ProTierPricingCTA = ({
           {headline && (
             <motion.h2
               variants={itemVariants}
-              className="font-section-heading font-normal tracking-tight text-primary text-[42px] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] select-none"
+              className="font-section-heading font-normal tracking-tight text-[#11100a] dark:text-[#fdf8f7] text-[42px] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] select-none"
             >
               {headline}
             </motion.h2>
@@ -84,7 +84,7 @@ export const ProTierPricingCTA = ({
           {subtitle && (
             <motion.p
               variants={itemVariants}
-              className="font-serif italic font-normal text-on-surface-variant text-[17px] sm:text-lg md:text-[20px] leading-relaxed max-w-2xl mt-6 mb-8"
+              className="font-serif italic font-normal text-[#48473f] dark:text-[#fdf8f7]/80 text-[17px] sm:text-lg md:text-[20px] leading-relaxed max-w-2xl mt-6 mb-8"
             >
               {subtitle}
             </motion.p>
@@ -99,7 +99,7 @@ export const ProTierPricingCTA = ({
               {features.map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-3.5 select-none">
                   <CircleCheck className="w-5.5 h-5.5 text-emerald-500 dark:text-emerald-400 shrink-0" strokeWidth={1.5} />
-                  <span className="font-ui-body text-sm sm:text-base font-semibold tracking-wide text-on-surface-variant">
+                  <span className="font-ui-body text-sm sm:text-base font-semibold tracking-wide text-[#48473f] dark:text-[#fdf8f7]/80">
                     {feature}
                   </span>
                 </div>
@@ -116,11 +116,11 @@ export const ProTierPricingCTA = ({
           <motion.div
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="relative w-full max-w-95 bg-surface rounded-2xl p-8 border border-border-fallback-10 shadow-lg flex flex-col justify-between"
+            className="relative w-full max-w-95 bg-[#fdf8f7] dark:bg-[#2a2a2a] rounded-2xl p-8 border border-[#11100a]/10 dark:border-[#fdf8f7]/10 shadow-lg flex flex-col justify-between"
           >
             {/* Most Popular Badge */}
             {cardBadgeText && (
-              <div className="absolute -top-3 right-6 bg-error-warm text-white text-[10px] font-bold tracking-[0.18em] uppercase px-4 py-1.5 rounded-full shadow-sm select-none">
+              <div className="absolute -top-3 right-6 bg-[#ff5a36] dark:bg-[#ff7a59] text-white text-[10px] font-bold tracking-[0.18em] uppercase px-4 py-1.5 rounded-full shadow-sm select-none">
                 {cardBadgeText}
               </div>
             )}
@@ -128,7 +128,7 @@ export const ProTierPricingCTA = ({
             <div>
               {/* Header */}
               {cardTitle && (
-                <div className="font-mono-code text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/50 mb-3 select-none">
+                <div className="font-mono-code text-[11px] font-bold uppercase tracking-[0.2em] text-[#48473f]/50 dark:text-[#fdf8f7]/50 mb-3 select-none">
                   {cardTitle}
                 </div>
               )}
@@ -137,12 +137,12 @@ export const ProTierPricingCTA = ({
               {(cardPrice || cardPeriod) && (
                 <div className="flex items-baseline gap-1 mb-5 select-none">
                   {cardPrice && (
-                    <span className="font-section-heading text-[48px] sm:text-[56px] font-normal leading-none text-primary">
+                    <span className="font-section-heading text-[48px] sm:text-[56px] font-normal leading-none text-[#11100a] dark:text-[#fdf8f7]">
                       {cardPrice}
                     </span>
                   )}
                   {cardPeriod && (
-                    <span className="font-serif italic text-base text-on-surface-variant/40">
+                    <span className="font-serif italic text-base text-[#48473f]/40 dark:text-[#fdf8f7]/40">
                       {cardPeriod}
                     </span>
                   )}
@@ -151,13 +151,13 @@ export const ProTierPricingCTA = ({
 
               {/* Card Description */}
               {cardDescription && (
-                <p className="font-serif italic text-[15px] sm:text-[16px] text-on-surface-variant/70 leading-relaxed mb-6">
+                <p className="font-serif italic text-[15px] sm:text-[16px] text-[#48473f]/70 dark:text-[#fdf8f7]/70 leading-relaxed mb-6">
                   {cardDescription}
                 </p>
               )}
 
               {/* Divider */}
-              <div className="w-full h-px bg-border-fallback-10 mb-6" />
+              <div className="w-full h-px bg-[#11100a]/10 dark:bg-[#fdf8f7]/10 mb-6" />
             </div>
 
             {/* Button */}
@@ -167,7 +167,7 @@ export const ProTierPricingCTA = ({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={onCtaClick}
-                  className="w-full py-3.5 sm:py-4 rounded-xl font-button-label text-[13px] font-bold tracking-wider bg-primary text-on-primary hover:bg-error-warm transition-colors duration-200 cursor-pointer shadow-sm select-none"
+                  className="w-full py-3.5 sm:py-4 rounded-xl font-button-label text-[13px] font-bold tracking-wider bg-[#11100a] dark:bg-[#fdf8f7] text-[#fdf8f7] dark:text-[#11100a] hover:bg-[#ff5a36] dark:hover:bg-[#ff7a59] transition-colors duration-200 cursor-pointer shadow-sm select-none"
                 >
                   {ctaText}
                 </motion.button>
@@ -175,7 +175,7 @@ export const ProTierPricingCTA = ({
 
               {/* Guarantee Label */}
               {guaranteeText && (
-                <div className="text-center font-mono-code text-[10px] sm:text-[11px] text-on-surface-variant/50 tracking-wider mt-2 select-none">
+                <div className="text-center font-mono-code text-[10px] sm:text-[11px] text-[#48473f]/50 dark:text-[#fdf8f7]/50 tracking-wider mt-2 select-none">
                   {guaranteeText}
                 </div>
               )}
@@ -186,5 +186,3 @@ export const ProTierPricingCTA = ({
     </div>
   );
 };
-
-export default ProTierPricingCTA;

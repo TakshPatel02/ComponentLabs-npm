@@ -1,42 +1,52 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const SaaSFooter = () => {
+export const SaaSFooter = ({
+  ctaTitle = "Create, Sell and Grow",
+  ctaDescription = "Join a community of over 1000+ companies and developers who have already discovered the power of ComponentLabs.",
+  ctaButtonText = "Contact Sales",
+  brandName = "ComponentLabs",
+  brandDescription = "ComponentLabs is a platform for building AI-powered applications.",
+  productLinks = ["Features", "Solution", "Partnerships", "Mobile App"],
+  companyLinks = ["About", "Licence", "Privacy"],
+  copyright = "© 2026 ComponentLabs, All rights reserved",
+  statusText = "All Systems Normal",
+  className = ""
+}) => {
   return (
-    <footer className="w-full bg-surface-container pt-8 pb-8 px-4 md:px-8 overflow-hidden">
+    <footer className={`w-full bg-[#f1edeb] dark:bg-[#1a1a1a] pt-8 pb-8 px-4 md:px-8 overflow-hidden ${className}`}>
       {/* Top CTA Card */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-6xl mx-auto bg-surface rounded-t-[32px] md:rounded-t-[48px] rounded-b-[16px] md:rounded-b-[24px] shadow-[0_2px_20px_rgba(0,0,0,0.04)] dark:shadow-none border border-black/5 dark:border-white/5 pt-16 pb-0 px-6 md:px-12 text-center relative overflow-hidden flex flex-col items-center"
+        className="max-w-6xl mx-auto bg-[#fdf8f7] dark:bg-[#2a2a2a] rounded-t-[32px] md:rounded-t-[48px] rounded-b-[16px] md:rounded-b-[24px] shadow-[0_2px_20px_rgba(0,0,0,0.04)] dark:shadow-none border border-[#11100a]/5 dark:border-[#fdf8f7]/5 pt-16 pb-0 px-6 md:px-12 text-center relative overflow-hidden flex flex-col items-center"
       >
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold text-primary mb-4 tracking-tight w-full text-center"
+          className="text-3xl md:text-5xl font-bold text-[#11100a] dark:text-[#fdf8f7] mb-4 tracking-tight w-full text-center"
         >
-          Create, Sell and Grow
+          {ctaTitle}
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.5 }}
-          className="text-on-surface-variant w-full max-w-2xl mx-auto mb-8 text-sm md:text-base leading-relaxed text-center"
+          className="text-[#48473f] dark:text-[#fdf8f7]/80 w-full max-w-2xl mx-auto mb-8 text-sm md:text-base leading-relaxed text-center"
         >
-          Join a community of over 1000+ companies and developers who have
-          already discovered the power of ComponentLabs.
+          {ctaDescription}
         </motion.p>
         <motion.button 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-6 py-2.5 rounded-lg font-medium transition-colors z-10 shadow-sm"
         >
-          Contact Sales
+          {ctaButtonText}
         </motion.button>
 
         {/* Decorative Arch Graphic */}
@@ -45,7 +55,7 @@ const SaaSFooter = () => {
           whileInView={{ y: 8, opacity: 0.8 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-          className="mt-8 w-32 h-24 md:w-48 md:h-32 border-16 md:border-24 border-surface-container rounded-t-[40px] md:rounded-t-[60px] border-b-0 translate-y-2 opacity-80" 
+          className="mt-8 w-32 h-24 md:w-48 md:h-32 border-16 md:border-24 border-[#f1edeb] dark:border-[#1a1a1a] rounded-t-[40px] md:rounded-t-[60px] border-b-0 translate-y-2 opacity-80" 
         />
       </motion.div>
 
@@ -68,7 +78,7 @@ const SaaSFooter = () => {
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
           className="col-span-1 md:col-span-4 lg:col-span-5"
         >
-          <div className="flex items-center gap-2 mb-4 text-primary">
+          <div className="flex items-center gap-2 mb-4 text-[#11100a] dark:text-[#fdf8f7]">
             <svg
               width="24"
               height="24"
@@ -78,7 +88,7 @@ const SaaSFooter = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-primary"
+              className="text-[#11100a] dark:text-[#fdf8f7]"
             >
               <rect x="3" y="3" width="7" height="7" />
               <rect x="14" y="3" width="7" height="7" />
@@ -87,12 +97,12 @@ const SaaSFooter = () => {
               <path d="M10 10l4 4" />
               <path d="M14 10l-4 4" />
             </svg>
-            <span className="font-bold text-xl tracking-tight text-primary">
-              ComponentLabs
+            <span className="font-bold text-xl tracking-tight text-[#11100a] dark:text-[#fdf8f7]">
+              {brandName}
             </span>
           </div>
-          <p className="text-on-surface-variant text-sm max-w-xs leading-relaxed">
-            ComponentLabs is a platform for building AI-powered applications.
+          <p className="text-[#48473f] dark:text-[#fdf8f7]/80 text-sm max-w-xs leading-relaxed">
+            {brandDescription}
           </p>
         </motion.div>
 
@@ -100,46 +110,35 @@ const SaaSFooter = () => {
         <div className="col-span-1 md:col-span-8 lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
           {/* Product */}
           <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="flex flex-col gap-4">
-            <h4 className="font-semibold text-primary text-sm mb-2">
+            <h4 className="font-semibold text-[#11100a] dark:text-[#fdf8f7] text-sm mb-2">
               Product
             </h4>
-            <a href="#" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-              Features
-            </a>
-            <a href="#" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-              Solution
-            </a>
-            <a href="#" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-              Partnerships
-            </a>
-            <a href="#" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-              Mobile App
-            </a>
+            {productLinks.map((link, idx) => (
+              <a key={idx} href="#" className="text-sm text-[#48473f] dark:text-[#fdf8f7]/80 hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-colors">
+                {link}
+              </a>
+            ))}
           </motion.div>
 
           {/* Company */}
           <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="flex flex-col gap-4">
-            <h4 className="font-semibold text-primary text-sm mb-2">
+            <h4 className="font-semibold text-[#11100a] dark:text-[#fdf8f7] text-sm mb-2">
               Company
             </h4>
-            <a href="#" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-              About
-            </a>
-            <a href="#" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-              Licence
-            </a>
-            <a href="#" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-              Privacy
-            </a>
+            {companyLinks.map((link, idx) => (
+              <a key={idx} href="#" className="text-sm text-[#48473f] dark:text-[#fdf8f7]/80 hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-colors">
+                {link}
+              </a>
+            ))}
           </motion.div>
 
           {/* Community */}
           <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="flex flex-col gap-4 col-span-2 sm:col-span-1">
-            <h4 className="font-semibold text-primary text-sm mb-2">
+            <h4 className="font-semibold text-[#11100a] dark:text-[#fdf8f7] text-sm mb-2">
               Community
             </h4>
-            <div className="flex items-center gap-4 text-on-surface-variant">
-              <a href="#" className="hover:text-primary transition-colors">
+            <div className="flex items-center gap-4 text-[#48473f] dark:text-[#fdf8f7]/80">
+              <a href="#" className="hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-colors">
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
@@ -148,7 +147,7 @@ const SaaSFooter = () => {
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
-              <a href="#" className="hover:text-primary transition-colors">
+              <a href="#" className="hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-colors">
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
@@ -168,20 +167,18 @@ const SaaSFooter = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="max-w-6xl mx-auto mt-16 md:mt-24 pt-8 border-t border-gray-200 border-dashed dark:border-white/10 px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+        className="max-w-6xl mx-auto mt-16 md:mt-24 pt-8 border-t border-[#11100a]/10 dark:border-[#fdf8f7]/10 border-dashed px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-4"
       >
-        <p className="text-sm text-on-surface-variant">
-          © 2026 ComponentLabs, All rights reserved
+        <p className="text-sm text-[#48473f] dark:text-[#fdf8f7]/80">
+          {copyright}
         </p>
-        <button className="flex items-center gap-2 bg-surface/50 border border-black/5 dark:border-white/10 rounded-full px-4 py-1.5 shadow-sm text-sm font-medium text-primary transition-all hover:bg-black/5 dark:hover:bg-white/5 active:scale-95">
+        <button className="flex items-center gap-2 bg-[#fdf8f7]/50 dark:bg-[#2a2a2a]/50 border border-[#11100a]/5 dark:border-[#fdf8f7]/10 rounded-full px-4 py-1.5 shadow-sm text-sm font-medium text-[#11100a] dark:text-[#fdf8f7] transition-all hover:bg-[#11100a]/5 dark:hover:bg-[#fdf8f7]/5 active:scale-95">
           <span className="w-2 h-2 rounded-full bg-emerald-400 relative">
             <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
           </span>
-          All Systems Normal
+          {statusText}
         </button>
       </motion.div>
     </footer>
   );
 };
-
-export default SaaSFooter;

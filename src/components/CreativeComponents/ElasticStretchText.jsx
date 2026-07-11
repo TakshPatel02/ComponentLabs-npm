@@ -28,7 +28,7 @@ const Char = ({ char }) => {
       animate={{
         scaleY: isHovered ? 1.4 : 1,
         scaleX: isHovered ? 0.8 : 1,
-        color: isHovered ? "#E8567A" : "#ffffff",
+        color: isHovered ? "#E8567A" : "currentColor",
       }}
       transition={{
         type: "spring",
@@ -36,7 +36,7 @@ const Char = ({ char }) => {
         damping: 20,
         mass: 1
       }}
-      className="cursor-default select-none"
+      className="cursor-default select-none text-[#11100a] dark:text-[#fdf8f7]"
     >
       <span className="font-['Space_Grotesk'] text-6xl md:text-8xl font-black uppercase inline-block origin-center tracking-tighter">
         {char}

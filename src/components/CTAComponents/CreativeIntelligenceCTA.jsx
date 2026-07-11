@@ -37,7 +37,7 @@ export const CreativeIntelligenceCTA = ({
   };
 
   return (
-    <div className={`w-full relative overflow-hidden bg-surface-container text-on-surface py-12 md:py-18 flex flex-col items-center justify-center transition-colors duration-300 ${className}`}>
+    <div className={`w-full relative overflow-hidden bg-[#f1edeb] dark:bg-[#1a1a1a] text-[#11100a] dark:text-[#fdf8f7] py-12 md:py-18 flex flex-col items-center justify-center transition-colors duration-300 ${className}`}>
       {/* ── Main Content Container ── */}
       <motion.div
         variants={containerVariants}
@@ -61,7 +61,7 @@ export const CreativeIntelligenceCTA = ({
         {headline && (
           <motion.h2
             variants={itemVariants}
-            className="font-section-heading font-normal tracking-tight text-primary text-[38px] sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.1] max-w-4xl select-none"
+            className="font-section-heading font-normal tracking-tight text-[#11100a] dark:text-[#fdf8f7] text-[38px] sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.1] max-w-4xl select-none"
           >
             {headline}
           </motion.h2>
@@ -71,7 +71,7 @@ export const CreativeIntelligenceCTA = ({
         {subtitle && (
           <motion.p
             variants={itemVariants}
-            className="font-serif italic font-normal text-on-surface-variant text-base sm:text-lg md:text-[19px] leading-relaxed max-w-2xl mt-6 px-4"
+            className="font-serif italic font-normal text-[#48473f] dark:text-[#fdf8f7]/80 text-base sm:text-lg md:text-[19px] leading-relaxed max-w-2xl mt-6 px-4"
           >
             {subtitle}
           </motion.p>
@@ -87,7 +87,7 @@ export const CreativeIntelligenceCTA = ({
               whileHover={{ scale: 1.03, y: -1 }}
               whileTap={{ scale: 0.98 }}
               onClick={onCtaClick}
-              className="px-8 py-3 rounded-full font-button-label text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase bg-surface text-on-surface-variant border border-border-fallback-10 hover:text-primary transition-all duration-200 cursor-pointer shadow-xs"
+              className="px-8 py-3 rounded-full font-button-label text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase bg-[#fdf8f7] dark:bg-[#2a2a2a] text-[#48473f] dark:text-[#fdf8f7]/80 border border-[#11100a]/10 dark:border-[#fdf8f7]/10 hover:text-[#11100a] dark:hover:text-[#fdf8f7] transition-all duration-200 cursor-pointer shadow-xs"
             >
               {ctaText}
             </motion.button>
@@ -98,7 +98,7 @@ export const CreativeIntelligenceCTA = ({
         {imageUrl && (
           <motion.div
             variants={itemVariants}
-            className="w-full mt-16 rounded-xl md:rounded-2xl border border-border-fallback-10 overflow-hidden shadow-sm bg-surface"
+            className="w-full mt-16 rounded-xl md:rounded-2xl border border-[#11100a]/10 dark:border-[#fdf8f7]/10 overflow-hidden shadow-sm bg-[#fdf8f7] dark:bg-[#2a2a2a]"
           >
             <motion.img
               src={imageUrl}
@@ -113,5 +113,3 @@ export const CreativeIntelligenceCTA = ({
     </div>
   );
 };
-
-export default CreativeIntelligenceCTA;

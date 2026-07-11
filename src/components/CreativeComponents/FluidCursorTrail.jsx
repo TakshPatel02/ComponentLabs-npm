@@ -152,13 +152,13 @@ export const FluidCursorTrail = ({
 
   return (
     <div
-      className={`w-full h-full relative overflow-hidden min-h-[400px] bg-surface rounded-xl flex items-center justify-center cursor-crosshair ${className}`}
+      className={`w-full h-full relative overflow-hidden min-h-[400px] bg-[#fdf8f7] dark:bg-[#2a2a2a] rounded-xl flex items-center justify-center cursor-crosshair ${className}`}
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10">
-        <h3 className="font-section-heading text-2xl md:text-4xl text-primary font-bold tracking-tight mb-2 opacity-20">
+        <h3 className="font-section-heading text-2xl md:text-4xl text-[#11100a] dark:text-[#fdf8f7] font-bold tracking-tight mb-2 opacity-20">
           Move your mouse
         </h3>
-        <p className="font-editorial-standard text-on-surface-variant text-sm md:text-base opacity-40">
+        <p className="font-editorial-standard text-[#48473f] dark:text-[#fdf8f7]/80 text-sm md:text-base opacity-40">
           Fluid trail simulation
         </p>
       </div>
@@ -169,5 +169,3 @@ export const FluidCursorTrail = ({
     </div>
   );
 };
-
-export default FluidCursorTrail;

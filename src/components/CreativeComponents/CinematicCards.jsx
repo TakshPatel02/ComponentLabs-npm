@@ -176,7 +176,7 @@ export const CinematicCards = ({
   };
 
   return (
-    <div className={`w-full h-full flex items-center justify-center bg-surface p-4 md:p-12 overflow-hidden ${className}`}>
+    <div className={`w-full h-full flex items-center justify-center bg-[#fdf8f7] dark:bg-[#2a2a2a] p-4 md:p-12 overflow-hidden ${className}`}>
       <div className={`flex w-full max-w-7xl gap-2 md:gap-4 h-full items-stretch ${containerClassName}`}>
         {items.map((card, index) => (
           <CinematicCard
@@ -191,5 +191,3 @@ export const CinematicCards = ({
     </div>
   );
 };
-
-export default CinematicCards;

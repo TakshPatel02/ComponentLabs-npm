@@ -29,3 +29,7 @@ export * from './components/NumberComponents';
 export * from './components/LoaderComponents';
 
 export * from './components/FeatureComponents';
+
+export * from './components/FooterComponents';
+
+export * from './components/SVGAnimationComponents';
