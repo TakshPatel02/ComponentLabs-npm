@@ -34,7 +34,7 @@ const ROWS = [
   ]
 ];
 
-const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
+const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp, keyGradient, keyTextClass }) => {
   const isSpace = keyData.isSpace;
   
   return (
@@ -65,7 +65,7 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
           ${isSpace ? 'rounded-[28px]' : 'rounded-full'}
         `}
         style={{
-          background: 'radial-gradient(circle at 30% 30%, #fffff8 0%, #e8e3d5 60%, #c4bca3 100%)',
+          background: keyGradient || 'radial-gradient(circle at 30% 30%, #fffff8 0%, #e8e3d5 60%, #c4bca3 100%)',
           boxShadow: isPressed 
             ? 'inset 0 4px 8px rgba(0,0,0,0.5), inset 0 1px 3px rgba(0,0,0,0.7)' 
             : 'inset 0 -2px 6px rgba(0,0,0,0.4), inset 0 3px 5px rgba(255,255,255,1), inset 0 0 12px rgba(0,0,0,0.15)',
@@ -82,7 +82,7 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
         )}
 
         <span 
-          className={`z-10 text-[#1a1a1a] ${isSpace ? 'text-[12px] tracking-[0.3em] font-bold opacity-70 uppercase mt-1' : 'text-[28px] font-serif font-semibold mt-1'}`}
+          className={`z-10 ${keyTextClass} ${isSpace ? 'text-[12px] tracking-[0.3em] font-bold opacity-70 uppercase mt-1' : 'text-[28px] font-serif font-semibold mt-1'}`}
           style={{ textShadow: '0 1px 0 rgba(255,255,255,0.8)' }}
         >
           {keyData.label}
@@ -92,7 +92,13 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
   );
 }
 
-const TypewriterKeyboard = () => {
+export const TypewriterKeyboard = ({
+  soundUrl = "/sound.ogg",
+  className = "",
+  chassisGradient = "radial-gradient(circle at 50% 0%, #3a3a3a 0%, #1a1a1a 100%)",
+  keyGradient = "radial-gradient(circle at 30% 30%, #fffff8 0%, #e8e3d5 60%, #c4bca3 100%)",
+  keyTextClass = "text-[#1a1a1a]"
+}) => {
   const [pressedKeys, setPressedKeys] = useState({});
   const [audioBuffer, setAudioBuffer] = useState(null);
   const audioContextRef = useRef(null);
@@ -140,7 +146,7 @@ const TypewriterKeyboard = () => {
     const initAudio = async () => {
       audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
       try {
-        const response = await fetch('/sound.ogg');
+        const response = await fetch(soundUrl);
         if (!response.ok) return;
         const arrayBuffer = await response.arrayBuffer();
         const decodedAudio = await audioContextRef.current.decodeAudioData(arrayBuffer);
@@ -226,7 +232,7 @@ const TypewriterKeyboard = () => {
   };
 
   return (
-    <div ref={containerRef} className="w-full flex justify-center items-center py-8 md:py-12 overflow-hidden">
+    <div ref={containerRef} className={`w-full flex justify-center items-center py-8 md:py-12 overflow-hidden ${className}`}>
       <div 
         style={{ 
           width: `${840 * scale}px`, 
@@ -245,11 +251,10 @@ const TypewriterKeyboard = () => {
           }}
           className="flex justify-center"
         >
-          {/* Keyboard Chassis */}
           <div 
             className="px-16 py-12 rounded-[16px] relative overflow-hidden flex flex-col items-center gap-6 w-[800px]"
             style={{
-              background: 'radial-gradient(circle at 50% 0%, #3a3a3a 0%, #1a1a1a 100%)',
+              background: chassisGradient,
               boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), 0 20px 40px rgba(0,0,0,0.4)',
             }}
           >
@@ -281,6 +286,8 @@ const TypewriterKeyboard = () => {
                       isPressed={pressedKeys[keyData.code]} 
                       onMouseDown={handleMouseDown}
                       onMouseUp={handleMouseUp}
+                      keyGradient={keyGradient}
+                      keyTextClass={keyTextClass}
                     />
                   ))}
                 </div>
@@ -292,5 +299,3 @@ const TypewriterKeyboard = () => {
     </div>
   );
 };
-
-export default TypewriterKeyboard;

@@ -85,7 +85,7 @@ export const UploadButton = ({
             : {}
         }
         whileTap={status === "idle" ? { scale: 0.95 } : {}}
-        className={`relative px-6 py-3.5 min-w-50 flex items-center justify-center font-['Space_Grotesk',sans-serif] text-[13px] font-medium tracking-widest uppercase border overflow-hidden transition-colors duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`relative px-6 py-3.5 min-w-50 flex items-center justify-center font-['Space_Grotesk',sans-serif] text-[13px] font-medium tracking-widest uppercase border overflow-hidden transition-colors duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
           status === "uploading" ? "cursor-not-allowed" : "cursor-pointer"
         } ${
           status === "success"
@@ -134,7 +134,7 @@ export const UploadButton = ({
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="flex items-center gap-2"
               >
-                  <Loader2 size={18} />
+                  <Loader2 size={18} className="animate-spin" />
                 {uploadingText}
               </motion.div>
             )}

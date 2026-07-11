@@ -6,8 +6,8 @@ const Crosshair = ({ top, left, bottom, right }) => (
     className="absolute w-4 h-4 flex items-center justify-center z-10 pointer-events-none"
     style={{ top, left, bottom, right, transform: 'translate(-50%, -50%)' }}
   >
-    <div className="absolute w-px h-full bg-[#1c1b1b] opacity-20"></div>
-    <div className="absolute h-px w-full bg-[#1c1b1b] opacity-20"></div>
+    <div className="absolute w-px h-full bg-[#1c1b1b] dark:bg-[#fdf8f7] opacity-20"></div>
+    <div className="absolute h-px w-full bg-[#1c1b1b] dark:bg-[#fdf8f7] opacity-20"></div>
   </div>
 );
 
@@ -19,13 +19,13 @@ const FeatureCell = ({ title, description, icon, delay, borderRight = false, bor
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
       className={`
-        group/cell relative flex flex-col p-8 md:p-10 cursor-default bg-[#fdf8f7] text-[#11100a] 
-        hover:bg-[#1c1b1b] hover:text-[#fdf8f7] transition-colors duration-500
-        ${borderRight ? 'oklab-border border-r' : ''}
-        ${borderBottom ? 'oklab-border border-b' : ''}
+        group/cell relative flex flex-col p-8 md:p-10 cursor-default bg-[#fdf8f7] dark:bg-[#1a1a1a] text-[#11100a] dark:text-[#fdf8f7]
+        hover:bg-[#1c1b1b] dark:hover:bg-[#fdf8f7]/10 hover:text-[#fdf8f7] transition-colors duration-500
+        ${borderRight ? 'border-r border-[#11100a]/10 dark:border-[#fdf8f7]/10' : ''}
+        ${borderBottom ? 'border-b border-[#11100a]/10 dark:border-[#fdf8f7]/10' : ''}
       `}
     >
-      <div className="mb-6 text-[#11100a] group-hover/cell:text-[#fdf8f7] transition-colors duration-500">
+      <div className="mb-6 text-[#11100a] dark:text-[#fdf8f7] group-hover/cell:text-[#fdf8f7] transition-colors duration-500">
         {icon}
       </div>
       <h3 className="font-section-heading text-xl md:text-2xl mb-2 font-bold">{title}</h3>
@@ -36,58 +36,24 @@ const FeatureCell = ({ title, description, icon, delay, borderRight = false, bor
   );
 };
 
-const CrosshairFeatureGrid = () => {
-  return (
-    <div className="w-full flex justify-center items-center">
-      
-      <div className="relative grid grid-cols-1 md:grid-cols-3 w-full oklab-border rounded-sm overflow-hidden shadow-sm bg-[#fdf8f7]">
-        
-        {/* Row 1 */}
-        <FeatureCell 
-          title="Component Architecture" 
-          description="Modular UI patterns designed for infinite scalability and minimal friction."
-          icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>}
-          borderRight
-          borderBottom
-          delay={0.1}
-        />
-        <FeatureCell 
-          title="Semantic Variables" 
-          description="Strict adherence to tokenized color palettes and spacing scales."
-          icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>}
-          borderRight
-          borderBottom
-          delay={0.2}
-        />
-        <FeatureCell 
-          title="Interaction Design" 
-          description="Fluid, physics-based micro-interactions powered by Framer Motion."
-          icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>}
-          borderBottom
-          delay={0.3}
-        />
+const defaultFeatures = [
+  { title: "Component Architecture", description: "Modular UI patterns designed for infinite scalability and minimal friction.", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>, borderRight: true, borderBottom: true, delay: 0.1 },
+  { title: "Semantic Variables", description: "Strict adherence to tokenized color palettes and spacing scales.", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>, borderRight: true, borderBottom: true, delay: 0.2 },
+  { title: "Interaction Design", description: "Fluid, physics-based micro-interactions powered by Framer Motion.", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>, borderBottom: true, delay: 0.3 },
+  { title: "Type Hierarchy", description: "Editorial layout structures using dynamic, responsive font scaling.", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>, borderRight: true, delay: 0.4 },
+  { title: "Dark Mode Support", description: "Automatic color inversion with perceptually balanced contrast ratios.", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>, borderRight: true, delay: 0.5 },
+  { title: "Accessibility First", description: "ARIA compliance, keyboard navigation, and screen reader readiness.", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>, delay: 0.6 }
+];
 
-        {/* Row 2 */}
-        <FeatureCell 
-          title="Type Hierarchy" 
-          description="Editorial layout structures using dynamic, responsive font scaling."
-          icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>}
-          borderRight
-          delay={0.4}
-        />
-        <FeatureCell 
-          title="Dark Mode Support" 
-          description="Automatic color inversion with perceptually balanced contrast ratios."
-          icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>}
-          borderRight
-          delay={0.5}
-        />
-        <FeatureCell 
-          title="Accessibility First" 
-          description="ARIA compliance, keyboard navigation, and screen reader readiness."
-          icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>}
-          delay={0.6}
-        />
+export const CrosshairFeatureGrid = ({ features = defaultFeatures, className = "" }) => {
+  return (
+    <div className={`w-full flex justify-center items-center ${className}`}>
+      
+      <div className="relative grid grid-cols-1 md:grid-cols-3 w-full border border-[#11100a]/10 dark:border-[#fdf8f7]/10 rounded-sm overflow-hidden shadow-sm bg-[#fdf8f7] dark:bg-[#1a1a1a]">
+        
+        {features.map((feature, i) => (
+          <FeatureCell key={i} {...feature} />
+        ))}
 
         {/* Internal Crosshair Markers (Hidden on small screens since it stacks) */}
         <div className="hidden md:block">
@@ -99,5 +65,3 @@ const CrosshairFeatureGrid = () => {
     </div>
   );
 };
-
-export default CrosshairFeatureGrid;

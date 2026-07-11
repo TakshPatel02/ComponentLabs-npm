@@ -25,3 +25,7 @@ export * from './components/CreativeComponents';
 export * from './components/CTAComponents';
 
 export * from './components/NumberComponents';
+
+export * from './components/LoaderComponents';
+
+export * from './components/FeatureComponents';

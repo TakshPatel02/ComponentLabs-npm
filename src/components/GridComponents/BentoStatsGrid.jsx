@@ -61,19 +61,18 @@ const StatCard = ({ title, value, tag, className, delay, accentColor = "#B09E99"
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className={`relative bg-[#f1edeb]/60 rounded-[16px] oklab-border p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-[0_12px_30px_rgba(0,0,0,0.15)] transition-all duration-300 ${className}`}
+      className={`relative bg-[#f1edeb]/60 dark:bg-[#1a1a1a]/60 rounded-[16px] border border-[#11100a]/10 dark:border-[#fdf8f7]/10 p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-[0_12px_30px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_12px_30px_rgba(0,0,0,0.3)] transition-all duration-300 ${className}`}
     >
       <div className="relative z-10 flex justify-between items-start mb-6">
-        <span className="font-system-micro text-[10px] tracking-[0.2em] text-[#48473f]/40 uppercase">
+        <span className="font-system-micro text-[10px] tracking-[0.2em] text-[#48473f]/40 dark:text-[#fdf8f7]/40 uppercase">
           {tag}
         </span>
         <div className="w-2 h-2 rounded-full" style={{ backgroundColor: accentColor }} />
       </div>
       
       <div className="mt-auto relative z-10">
-        <h3 className="font-editorial-standard text-[#11100a]/80 text-lg mb-1">{title}</h3>
-        <div className="font-section-heading text-[#11100a] text-4xl md:text-5xl mb-2">
+        <h3 className="font-editorial-standard text-[#11100a]/80 dark:text-[#fdf8f7]/80 text-lg mb-1">{title}</h3>
+        <div className="font-section-heading text-[#11100a] dark:text-[#fdf8f7] text-4xl md:text-5xl mb-2">
           <AnimatedCounter from={0} to={value} suffix={suffix} />
         </div>
       </div>
@@ -87,81 +86,23 @@ const StatCard = ({ title, value, tag, className, delay, accentColor = "#B09E99"
   );
 };
 
-const BentoStatsGrid = () => {
+const defaultStats = [
+  { className: "md:col-span-2 md:row-span-2 h-[280px] md:h-[340px]", tag: "COMPONENTS", title: "Total UI Elements", value: 142, delay: 0.1, accentColor: "#C8A6A6", showGraph: true },
+  { className: "md:col-span-1 md:row-span-1 h-[140px] md:h-[160px]", tag: "NPM INSTALLS", title: "Weekly DLs", value: 8540, delay: 0.2, accentColor: "#9A9F8E", suffix: "+" },
+  { className: "md:col-span-1 md:row-span-1 h-[140px] md:h-[160px]", tag: "STARS", title: "Github Repo", value: 329, delay: 0.3, accentColor: "#D0B8A8" },
+  { className: "md:col-span-1 md:row-span-1 md:col-start-1 md:row-start-3 h-[140px] md:h-[160px]", tag: "LATENCY", title: "Avg Render", value: 12, delay: 0.4, accentColor: "#9A9F8E", suffix: "ms" },
+  { className: "md:col-span-1 md:row-span-1 md:col-start-2 md:row-start-3 h-[140px] md:h-[160px]", tag: "COVERAGE", title: "Test Suite", value: 98, delay: 0.5, accentColor: "#D0B8A8", suffix: "%" },
+  { className: "md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2 h-[280px] md:h-[340px]", tag: "RETENTION", title: "Active Monthly Users", value: 12050, delay: 0.6, accentColor: "#C8A6A6", suffix: "+", showGraph: true, reversedSparkline: true }
+];
+
+export const BentoStatsGrid = ({ stats = defaultStats, className = "" }) => {
   return (
-    <div className="w-full">
+    <div className={`w-full ${className}`}>
       <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-[auto] gap-4 md:gap-6">
-        
-        {/* Large Card 1 */}
-        <StatCard 
-          className="md:col-span-2 md:row-span-2 h-[280px] md:h-[340px]" 
-          tag="COMPONENTS" 
-          title="Total UI Elements" 
-          value={142} 
-          delay={0.1}
-          accentColor="#C8A6A6" // Dusty Rose
-          showGraph={true}
-        />
-        
-        {/* Small Card 1 */}
-        <StatCard 
-          className="md:col-span-1 md:row-span-1 h-[140px] md:h-[160px]" 
-          tag="NPM INSTALLS" 
-          title="Weekly DLs" 
-          value={8540} 
-          delay={0.2}
-          accentColor="#9A9F8E" // Olive
-          suffix="+"
-        />
-
-        {/* Small Card 2 */}
-        <StatCard 
-          className="md:col-span-1 md:row-span-1 h-[140px] md:h-[160px]" 
-          tag="STARS" 
-          title="Github Repo" 
-          value={329} 
-          delay={0.3}
-          accentColor="#D0B8A8" // Muted Beige
-        />
-
-        {/* Small Card 3 (Bottom Left) */}
-        <StatCard 
-          className="md:col-span-1 md:row-span-1 md:col-start-1 md:row-start-3 h-[140px] md:h-[160px]" 
-          tag="LATENCY" 
-          title="Avg Render" 
-          value={12} 
-          delay={0.4}
-          accentColor="#9A9F8E"
-          suffix="ms"
-        />
-
-        {/* Small Card 4 (Bottom Left) */}
-        <StatCard 
-          className="md:col-span-1 md:row-span-1 md:col-start-2 md:row-start-3 h-[140px] md:h-[160px]" 
-          tag="COVERAGE" 
-          title="Test Suite" 
-          value={98} 
-          delay={0.5}
-          accentColor="#D0B8A8"
-          suffix="%"
-        />
-
-        {/* Large Card 2 */}
-        <StatCard 
-          className="md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2 h-[280px] md:h-[340px]" 
-          tag="RETENTION" 
-          title="Active Monthly Users" 
-          value={12050} 
-          delay={0.6}
-          accentColor="#C8A6A6"
-          suffix="+"
-          showGraph={true}
-          reversedSparkline
-        />
-
+        {stats.map((stat, i) => (
+          <StatCard key={i} {...stat} />
+        ))}
       </div>
     </div>
   );
 };
-
-export default BentoStatsGrid;

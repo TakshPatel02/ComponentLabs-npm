@@ -30,11 +30,11 @@ const MorphingAction = () => {
   return (
     <div className="flex flex-col gap-4 w-full h-full">
       <div className="flex flex-col">
-        <h4 className="font-editorial-standard text-lg font-medium text-[#11100a]">The Morphing Action</h4>
-        <p className="font-system-micro text-[11px] text-[#48473f]/60 uppercase tracking-wider">Primary CTA with integrated progress state.</p>
+        <h4 className="font-editorial-standard text-lg font-medium text-[#11100a] dark:text-[#fdf8f7]">The Morphing Action</h4>
+        <p className="font-system-micro text-[11px] text-[#48473f]/60 dark:text-[#fdf8f7]/60 uppercase tracking-wider">Primary CTA with integrated progress state.</p>
       </div>
 
-      <div className="bg-[#f1edeb]/20 oklab-border rounded-xl p-6 md:p-10 flex items-center justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative overflow-hidden">
+      <div className="bg-[#f1edeb]/20 dark:bg-[#1a1a1a]/40 border border-[#11100a]/10 dark:border-[#fdf8f7]/10 rounded-xl p-6 md:p-10 flex items-center justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative overflow-hidden">
         <AnimatePresence mode="wait">
           {status === 'idle' || status === 'complete' ? (
             <motion.button
@@ -43,7 +43,7 @@ const MorphingAction = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               onClick={startSequence}
-              className="bg-[#fdf8f7] oklab-border px-8 py-3 rounded-lg shadow-sm font-system-micro text-[12px] font-bold uppercase tracking-widest text-[#11100a] hover:bg-[#11100a] hover:text-[#ffffff] transition-all flex items-center gap-3 active:scale-95"
+              className="bg-[#fdf8f7] dark:bg-[#1a1a1a] border border-[#11100a]/10 dark:border-[#fdf8f7]/10 px-8 py-3 rounded-lg shadow-sm font-system-micro text-[12px] font-bold uppercase tracking-widest text-[#11100a] dark:text-[#fdf8f7] hover:bg-[#11100a] dark:hover:bg-[#fdf8f7] hover:text-[#ffffff] dark:hover:text-[#11100a] transition-all flex items-center gap-3 active:scale-95"
             >
               {status === 'complete' ? 'Reset Sequence' : 'Initialize Sequence'}
               <span className="material-symbols-outlined text-[14px]">bolt</span>
@@ -54,14 +54,14 @@ const MorphingAction = () => {
               initial={{ opacity: 0, width: '0%' }}
               animate={{ opacity: 1, width: '100%' }}
               exit={{ opacity: 0 }}
-              className="w-full max-w-[280px] h-10 bg-[#f1edeb]/60 rounded-lg oklab-border relative overflow-hidden flex items-center px-4"
+              className="w-full max-w-[280px] h-10 bg-[#f1edeb]/60 dark:bg-[#2a2a2a] rounded-lg border border-[#11100a]/10 dark:border-[#fdf8f7]/10 relative overflow-hidden flex items-center px-4"
             >
               <motion.div 
-                className="absolute left-0 top-0 bottom-0 bg-[#cf2d56]/10"
+                className="absolute left-0 top-0 bottom-0 bg-[#cf2d56]/10 dark:bg-[#cf2d56]/30"
                 initial={{ width: '0%' }}
                 animate={{ width: `${progress}%` }}
               />
-              <div className="relative z-10 flex justify-between w-full font-system-micro text-[10px] font-bold text-[#11100a]/70 uppercase tracking-tighter">
+              <div className="relative z-10 flex justify-between w-full font-system-micro text-[10px] font-bold text-[#11100a]/70 dark:text-[#fdf8f7]/70 uppercase tracking-tighter">
                 <span>Processing... {progress}%</span>
                 <motion.span 
                   animate={{ rotate: 360 }}
@@ -86,15 +86,15 @@ const ParameterDial = () => {
   return (
     <div className="flex flex-col gap-4 w-full h-full">
       <div className="flex flex-col">
-        <h4 className="font-editorial-standard text-lg font-medium text-[#11100a]">Precision Parameter Dial</h4>
-        <p className="font-system-micro text-[11px] text-[#48473f]/60 uppercase tracking-wider">High-fidelity value adjustment slider.</p>
+        <h4 className="font-editorial-standard text-lg font-medium text-[#11100a] dark:text-[#fdf8f7]">Precision Parameter Dial</h4>
+        <p className="font-system-micro text-[11px] text-[#48473f]/60 dark:text-[#fdf8f7]/60 uppercase tracking-wider">High-fidelity value adjustment slider.</p>
       </div>
 
-      <div className="bg-[#f1edeb]/20 oklab-border rounded-xl p-6 md:p-10 flex flex-col justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative">
+      <div className="bg-[#f1edeb]/20 dark:bg-[#1a1a1a]/40 border border-[#11100a]/10 dark:border-[#fdf8f7]/10 rounded-xl p-6 md:p-10 flex flex-col justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative">
         <div className="flex justify-between items-end mb-6">
-          <span className="font-system-micro text-[10px] font-bold uppercase tracking-[0.2em] text-[#48473f]/40">Border Radius</span>
-          <div className="bg-[#fdf8f7] oklab-border px-3 py-1 rounded shadow-sm">
-            <span className="font-system-micro text-[12px] font-bold text-[#11100a]">{value.toFixed(1)}px</span>
+          <span className="font-system-micro text-[10px] font-bold uppercase tracking-[0.2em] text-[#48473f]/40 dark:text-[#fdf8f7]/40">Border Radius</span>
+          <div className="bg-[#fdf8f7] dark:bg-[#1a1a1a] border border-[#11100a]/10 dark:border-[#fdf8f7]/10 px-3 py-1 rounded shadow-sm">
+            <span className="font-system-micro text-[12px] font-bold text-[#11100a] dark:text-[#fdf8f7]">{value.toFixed(1)}px</span>
           </div>
         </div>
         
@@ -102,7 +102,7 @@ const ParameterDial = () => {
           {/* Ticks */}
           <div className="absolute inset-0 flex justify-between items-center px-1 pointer-events-none">
             {[...Array(11)].map((_, i) => (
-              <div key={i} className={`w-px ${i % 5 === 0 ? 'h-3 bg-[#11100a]/20' : 'h-1.5 bg-[#11100a]/10'}`} />
+              <div key={i} className={`w-px ${i % 5 === 0 ? 'h-3 bg-[#11100a]/20 dark:bg-[#fdf8f7]/20' : 'h-1.5 bg-[#11100a]/10 dark:bg-[#fdf8f7]/10'}`} />
             ))}
           </div>
           
@@ -113,7 +113,7 @@ const ParameterDial = () => {
             step="0.5"
             value={value}
             onChange={(e) => setValue(parseFloat(e.target.value))}
-            className="w-full appearance-none bg-transparent cursor-pointer relative z-10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#fdf8f7] [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-border-fallback-10 [&::-webkit-slider-thumb]:shadow-md"
+            className="w-full appearance-none bg-transparent cursor-pointer relative z-10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#fdf8f7] dark:[&::-webkit-slider-thumb]:bg-[#1a1a1a] [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-[#11100a]/10 dark:[&::-webkit-slider-thumb]:border-[#fdf8f7]/10 [&::-webkit-slider-thumb]:shadow-md"
           />
         </div>
       </div>
@@ -138,21 +138,21 @@ const AtmosphericAccordion = () => {
   return (
     <div className="flex flex-col gap-4 w-full">
       <div className="flex flex-col">
-        <h4 className="font-editorial-standard text-lg font-medium text-[#11100a]">Atmospheric Accordion</h4>
-        <p className="font-system-micro text-[11px] text-[#48473f]/60 uppercase tracking-wider">Deep-shadow layered expansion pattern.</p>
+        <h4 className="font-editorial-standard text-lg font-medium text-[#11100a] dark:text-[#fdf8f7]">Atmospheric Accordion</h4>
+        <p className="font-system-micro text-[11px] text-[#48473f]/60 dark:text-[#fdf8f7]/60 uppercase tracking-wider">Deep-shadow layered expansion pattern.</p>
       </div>
 
       <div className="flex flex-col gap-2">
         {items.map((item, i) => (
-          <div key={i} className={`rounded-xl oklab-border overflow-hidden transition-all duration-500 ${openIndex === i ? 'bg-[#fdf8f7] shadow-[0_20px_40px_rgba(0,0,0,0.1)] scale-[1.01] z-10' : 'bg-[#f1edeb]/40 opacity-70'}`}>
+          <div key={i} className={`rounded-xl border border-[#11100a]/10 dark:border-[#fdf8f7]/10 overflow-hidden transition-all duration-500 ${openIndex === i ? 'bg-[#fdf8f7] dark:bg-[#1a1a1a] shadow-[0_20px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)] scale-[1.01] z-10' : 'bg-[#f1edeb]/40 dark:bg-[#1a1a1a]/40 opacity-70'}`}>
             <button 
               onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-              className="w-full px-6 py-5 flex justify-between items-center hover:bg-[#1c1b1b]/5 transition-colors"
+              className="w-full px-6 py-5 flex justify-between items-center hover:bg-[#1c1b1b]/5 dark:hover:bg-[#fdf8f7]/5 transition-colors"
             >
-              <span className="font-editorial-standard text-md font-medium text-[#11100a]">{item.title}</span>
+              <span className="font-editorial-standard text-md font-medium text-[#11100a] dark:text-[#fdf8f7]">{item.title}</span>
               <motion.span 
                 animate={{ rotate: openIndex === i ? 180 : 0 }}
-                className="material-symbols-outlined text-[18px] text-[#11100a]/40"
+                className="material-symbols-outlined text-[18px] text-[#11100a]/40 dark:text-[#fdf8f7]/40"
               >
                 expand_more
               </motion.span>
@@ -165,13 +165,13 @@ const AtmosphericAccordion = () => {
                   exit={{ height: 0, opacity: 0 }}
                   className="px-6 pb-6"
                 >
-                  <p className="font-editorial-body text-[15px] text-[#48473f] leading-relaxed max-w-3xl">
+                  <p className="font-editorial-body text-[15px] text-[#48473f] dark:text-[#fdf8f7]/80 leading-relaxed max-w-3xl">
                     {item.content}
                   </p>
                   {item.tags && (
                     <div className="flex gap-2 mt-4">
                       {item.tags.map(tag => (
-                        <span key={tag} className="font-system-micro text-[9px] uppercase tracking-wider px-2 py-1 bg-[#1c1b1b]/5 rounded-md text-[#11100a]/60 oklab-border">{tag}</span>
+                        <span key={tag} className="font-system-micro text-[9px] uppercase tracking-wider px-2 py-1 bg-[#1c1b1b]/5 dark:bg-[#fdf8f7]/5 rounded-md text-[#11100a]/60 dark:text-[#fdf8f7]/60 border border-[#11100a]/10 dark:border-[#fdf8f7]/10">{tag}</span>
                       ))}
                     </div>
                   )}
@@ -197,26 +197,26 @@ const DataStreamer = () => {
   return (
     <div className="flex flex-col gap-4 w-full mt-12">
       <div className="flex flex-col">
-        <h4 className="font-editorial-standard text-lg font-medium text-[#11100a]">The Data Streamer</h4>
-        <p className="font-system-micro text-[11px] text-[#48473f]/60 uppercase tracking-wider">Technical metrics feed with structural rigidity.</p>
+        <h4 className="font-editorial-standard text-lg font-medium text-[#11100a] dark:text-[#fdf8f7]">The Data Streamer</h4>
+        <p className="font-system-micro text-[11px] text-[#48473f]/60 dark:text-[#fdf8f7]/60 uppercase tracking-wider">Technical metrics feed with structural rigidity.</p>
       </div>
 
-      <div className="w-full bg-[#f1edeb]/20 oklab-border rounded-xl overflow-x-auto shadow-sm no-scrollbar">
+      <div className="w-full bg-[#f1edeb]/20 dark:bg-[#1a1a1a]/40 border border-[#11100a]/10 dark:border-[#fdf8f7]/10 rounded-xl overflow-x-auto shadow-sm no-scrollbar">
         <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
-            <tr className="bg-[#1c1b1b]/5 border-b oklab-border">
-              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-[#48473f]/40 font-bold">Timestamp</th>
-              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-[#48473f]/40 font-bold">Event ID</th>
-              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-[#48473f]/40 font-bold">Payload</th>
-              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-[#48473f]/40 font-bold text-right">Latency</th>
+            <tr className="bg-[#1c1b1b]/5 dark:bg-[#fdf8f7]/5 border-b border-[#11100a]/10 dark:border-[#fdf8f7]/10">
+              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-[#48473f]/40 dark:text-[#fdf8f7]/40 font-bold">Timestamp</th>
+              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-[#48473f]/40 dark:text-[#fdf8f7]/40 font-bold">Event ID</th>
+              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-[#48473f]/40 dark:text-[#fdf8f7]/40 font-bold">Payload</th>
+              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-[#48473f]/40 dark:text-[#fdf8f7]/40 font-bold text-right">Latency</th>
             </tr>
           </thead>
           <tbody>
             {data.map((row, i) => (
-              <tr key={i} className="border-b border-border-fallback-10/50 hover:bg-[#fdf8f7] transition-colors">
-                <td className="px-6 py-4 font-mono text-[11px] text-[#11100a]/60">{row.timestamp}</td>
-                <td className="px-6 py-4 font-system-micro text-[11px] font-bold text-[#11100a]/80">{row.id}</td>
-                <td className="px-6 py-4 font-mono text-[11px] text-[#11100a]/50 truncate max-w-[400px]">{row.payload}</td>
+              <tr key={i} className="border-b border-[#11100a]/10 dark:border-[#fdf8f7]/10 hover:bg-[#fdf8f7] dark:hover:bg-[#2a2a2a] transition-colors">
+                <td className="px-6 py-4 font-mono text-[11px] text-[#11100a]/60 dark:text-[#fdf8f7]/60">{row.timestamp}</td>
+                <td className="px-6 py-4 font-system-micro text-[11px] font-bold text-[#11100a]/80 dark:text-[#fdf8f7]/80">{row.id}</td>
+                <td className="px-6 py-4 font-mono text-[11px] text-[#11100a]/50 dark:text-[#fdf8f7]/50 truncate max-w-[400px]">{row.payload}</td>
                 <td className={`px-6 py-4 font-system-micro text-[11px] font-bold text-right ${row.status === 'error' ? 'text-[#cf2d56]' : 'text-emerald-500'}`}>{row.latency}</td>
               </tr>
             ))}
@@ -227,9 +227,9 @@ const DataStreamer = () => {
   );
 };
 
-const DynamicHero = () => {
+export const DynamicHero = ({ className = "" }) => {
   return (
-    <div className="w-full flex flex-col pt-12 pb-24">
+    <div className={`w-full flex flex-col pt-12 pb-24 ${className}`}>
       <div className="w-full max-w-container-max mx-auto flex flex-col gap-16 px-4 md:px-8">
         {/* Row 1: Morphing & Dial */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -246,5 +246,3 @@ const DynamicHero = () => {
     </div>
   );
 };
-
-export default DynamicHero;

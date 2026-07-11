@@ -25,7 +25,15 @@ const DEFAULT_FAQS = [
   },
 ];
 
-export const AnimatedFAQ = ({ faqs = DEFAULT_FAQS, question, answer }) => {
+export const AnimatedFAQ = ({
+  faqs = DEFAULT_FAQS,
+  titlePre = "Frequently Assumed ",
+  titleHighlight = "Queries",
+  description = "Everything you need to know about our principles and architecture.",
+  question,
+  answer,
+  className = ""
+}) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleToggle = (index) => {
@@ -37,16 +45,16 @@ export const AnimatedFAQ = ({ faqs = DEFAULT_FAQS, question, answer }) => {
     : (faqs || DEFAULT_FAQS);
 
   return (
-    <section className="w-full max-w-3xl mx-auto py-16 px-4 font-['Space_Grotesk']">
+    <section className={`w-full max-w-3xl mx-auto py-16 px-4 font-['Space_Grotesk'] ${className}`}>
       <div className="mb-12 flex flex-col items-center text-center">
-        <h2 className="font-['Space_Grotesk'] text-[32px] md:text-[40px] leading-tight text-[#11100a] transition-colors tracking-tighter mb-4">
-          Frequently Assumed{" "}
+        <h2 className="font-['Space_Grotesk'] text-[32px] md:text-[40px] leading-tight text-[#11100a] dark:text-[#fdf8f7] transition-colors tracking-tighter mb-4">
+          {titlePre}
           <span className="text-[#cf2d56] italic font-['Newsreader'] font-medium">
-            Queries
+            {titleHighlight}
           </span>
         </h2>
-        <p className="font-['Newsreader'] text-[18px] text-[#48473f] max-w-2xl">
-          Everything you need to know about our principles and architecture.
+        <p className="font-['Newsreader'] text-[18px] text-[#48473f] dark:text-[#fdf8f7]/80 max-w-2xl">
+          {description}
         </p>
       </div>
       <div className="space-y-4">
@@ -68,20 +76,20 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => {
   return (
     <motion.div
       initial={false}
-      className={`border border-[#26251e]/10 rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? "bg-[#ebeae5]" : "bg-[#fdf8f7] hover:bg-[#f1edeb]"
+      className={`border border-[#26251e]/10 dark:border-[#fdf8f7]/10 rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? "bg-[#ebeae5] dark:bg-[#1a1a1a]" : "bg-[#fdf8f7] dark:bg-[#2a2a2a] hover:bg-[#f1edeb] dark:hover:bg-[#333333]"
         }`}
     >
       <button
         onClick={onToggle}
         className="w-full px-6 py-6 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#cf2d56]/50 outline-none"
       >
-        <span className="text-[18px] font-medium text-[#11100a] font-['Space_Grotesk']">
+        <span className="text-[18px] font-medium text-[#11100a] dark:text-[#fdf8f7] font-['Space_Grotesk']">
           {question}
         </span>
         <motion.div
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3, ease: "backOut" }}
-          className="shrink-0 ml-4 h-8 w-8 rounded-full bg-[#fdf8f7] border border-[#26251e]/10 flex items-center justify-center text-[#cf2d56]"
+          className="shrink-0 ml-4 h-8 w-8 rounded-full bg-[#fdf8f7] dark:bg-[#2a2a2a] border border-[#26251e]/10 dark:border-[#fdf8f7]/10 flex items-center justify-center text-[#cf2d56]"
         >
           <Plus size={18} />
         </motion.div>
@@ -95,7 +103,7 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-6 text-[#48473f] text-[16px] leading-relaxed border-t border-[#26251e]/10 pt-4 mt-2 font-['Newsreader']">
+            <div className="px-6 pb-6 text-[#48473f] dark:text-[#fdf8f7]/80 text-[16px] leading-relaxed border-t border-[#26251e]/10 dark:border-[#fdf8f7]/10 pt-4 mt-2 font-['Newsreader']">
               <motion.p
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

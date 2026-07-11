@@ -141,5 +141,3 @@ export const AuroraHero = ({
     </motion.section>
   );
 };
-
-export default AuroraHero;

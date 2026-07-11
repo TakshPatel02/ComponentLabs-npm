@@ -37,7 +37,8 @@ export const PremiumTiltCard = ({
   const transform = useMotionTemplate`rotateX(${xSpring}deg) rotateY(${ySpring}deg)`;
   
   // Subtle radial gradient for glare that adapts to theme
-  const background = useMotionTemplate`radial-gradient(circle at ${glareX}% ${glareY}%, var(--on-surface-variant), transparent 45%)`;
+  // We use a neutral grey with low opacity that works for both light and dark mode, or rely on the opacity toggle below.
+  const background = useMotionTemplate`radial-gradient(circle at ${glareX}% ${glareY}%, rgba(120,110,100,0.15), transparent 45%)`;
 
   const halfRotationRange = rotationRange / 2;
 
@@ -80,7 +81,7 @@ export const PremiumTiltCard = ({
           transformStyle: "preserve-3d",
           transform,
         }}
-        className={`relative h-100 w-75 rounded-2xl bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] oklab-border cursor-pointer group transition-colors ${className}`}
+        className={`relative h-100 w-75 rounded-2xl bg-[#fdf8f7] dark:bg-[#1a1a1a] shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] border border-[#11100a]/10 dark:border-[#fdf8f7]/10 cursor-pointer group transition-colors ${className}`}
       >
         {/* Subtle dynamic glare overlay */}
         <motion.div 
@@ -93,7 +94,7 @@ export const PremiumTiltCard = ({
             transform: "translateZ(25px)",
             transformStyle: "preserve-3d",
           }}
-          className="absolute inset-4 flex flex-col justify-between rounded-xl bg-surface shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] oklab-border overflow-hidden p-6"
+          className="absolute inset-4 flex flex-col justify-between rounded-xl bg-[#fdf8f7] dark:bg-[#1a1a1a] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-[#11100a]/10 dark:border-[#fdf8f7]/10 overflow-hidden p-6 transition-colors"
         >
           {/* Subtle Background Pattern inside the card */}
           <div 
@@ -109,9 +110,9 @@ export const PremiumTiltCard = ({
              className="relative z-10 flex flex-col items-start gap-4"
           >
             {/* Minimal Logo / Icon placeholder */}
-            <div className="w-10 h-10 rounded-full bg-on-surface/5 flex items-center justify-center border oklab-border group-hover:bg-on-surface/10 transition-colors duration-300">
+            <div className="w-10 h-10 rounded-full bg-[#1c1b1b]/5 dark:bg-[#fdf8f7]/5 flex items-center justify-center border border-[#11100a]/10 dark:border-[#fdf8f7]/10 group-hover:bg-[#1c1b1b]/10 dark:group-hover:bg-[#fdf8f7]/10 transition-colors duration-300">
               {typeof icon === "string" ? (
-                <span className="font-['Space_Grotesk'] text-[18px] font-bold text-primary opacity-80">{icon}</span>
+                <span className="font-['Space_Grotesk'] text-[18px] font-bold text-[#11100a] dark:text-[#fdf8f7] opacity-80">{icon}</span>
               ) : (
                 icon
               )}
@@ -119,10 +120,10 @@ export const PremiumTiltCard = ({
             
             {/* Text Content */}
             <div className="text-left mt-1">
-              <h3 className="text-[22px] font-['Space_Grotesk'] font-medium text-primary tracking-tight">
+              <h3 className="text-[22px] font-['Space_Grotesk'] font-medium text-[#11100a] dark:text-[#fdf8f7] tracking-tight transition-colors">
                 {title}
               </h3>
-              <p className="text-[14.5px] font-['Inter'] text-on-surface-variant mt-3 leading-relaxed max-w-55">
+              <p className="text-[14.5px] font-['Inter'] text-[#48473f] dark:text-[#fdf8f7]/80 mt-3 leading-relaxed max-w-55 transition-colors">
                 {description}
               </p>
             </div>
@@ -131,11 +132,11 @@ export const PremiumTiltCard = ({
           {/* Action Area */}
           <div 
             style={{ transform: "translateZ(35px)" }} 
-            className="relative z-10 mt-auto pt-5 border-t border-border-fallback-10 group-hover:border-on-surface/10 transition-colors"
+            className="relative z-10 mt-auto pt-5 border-t border-[#11100a]/10 dark:border-[#fdf8f7]/10 group-hover:border-[#11100a]/20 dark:group-hover:border-[#fdf8f7]/20 transition-colors"
           >
             <Component 
               {...(Component === "a" ? { href } : { to: href })}
-              className="flex items-center gap-2 text-[14px] font-['Space_Grotesk'] font-semibold tracking-wide text-primary group-hover:text-[#E8567A] transition-colors duration-300 uppercase"
+              className="flex items-center gap-2 text-[14px] font-['Space_Grotesk'] font-semibold tracking-wide text-[#11100a] dark:text-[#fdf8f7] group-hover:text-[#E8567A] dark:group-hover:text-[#E8567A] transition-colors duration-300 uppercase"
               {...props}
             >
               {actionText}
